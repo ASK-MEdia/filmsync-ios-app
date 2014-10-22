@@ -28,6 +28,9 @@
 
 
 @property (nonatomic, assign) id<FilmSyncDelegate> delegate;
+@property (nonatomic, retain) NSString *sourceID; //Unique identifier that relates directly to specific content source. Required. (licensing number)
+@property (nonatomic, retain) NSURL *contentSourceURL; //Parent URL to source of content SON file (ex. http://docsinhand.com/api/12345.json)
+@property (nonatomic, assign) long int timeOut; //The specified time the app will continue to listen for source tones. Default, 120 seconds.
 
 + (FilmSync*) sharedFilmSyncManager;
 - (void) frequencyChangedWithValue:(float)newFrequency;

@@ -44,6 +44,9 @@
     // Set the gesture
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
+    NSUserDefaults *defaults =  [NSUserDefaults standardUserDefaults];
+    NSLog(@"defaults :%@",[defaults stringForKey:@"projectCode"]);
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -58,6 +61,12 @@
     FilmSync *filmSync = [FilmSync sharedFilmSyncManager];
     [filmSync setDelegate:self];
     [filmSync startListener];
+    
+    
+    NSUserDefaults *defaults =  [NSUserDefaults standardUserDefaults];
+    [defaults setObject:@"134" forKey:@"projectCode"];
+    [defaults synchronize];
+    
 }
 
 -(void) viewDidDisappear:(BOOL)animated

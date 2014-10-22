@@ -93,8 +93,8 @@ CGFloat kCollectionFeedWidthLandscape = 320;
     [self.collectionView setShowsVerticalScrollIndicator:NO];
     
     
-    NSLog(@"Fonts :%@",[UIFont familyNames] );
-    NSLog (@"Courier New family fonts: %@", [UIFont fontNamesForFamilyName:@"Arial"]);
+    //NSLog(@"Fonts :%@",[UIFont familyNames] );
+    //NSLog (@"Courier New family fonts: %@", [UIFont fontNamesForFamilyName:@"Arial"]);
     
     
 }

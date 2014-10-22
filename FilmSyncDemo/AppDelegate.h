@@ -11,5 +11,9 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) UIButton *centerButton;
+@property (strong, nonatomic) UITabBarController *tabBarVC;
+@property BOOL isCenterButtonAdded;
 
+-(void) addCenterButtonFromcontroller:(UIViewController *)VC;
 @end

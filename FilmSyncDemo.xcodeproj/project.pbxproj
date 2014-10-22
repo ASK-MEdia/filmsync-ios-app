@@ -35,7 +35,9 @@
 		09418BEF19D18EAF00C6588E /* TwitterSearchViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 09418BEE19D18EAF00C6588E /* TwitterSearchViewControllerTest.m */; };
 		09418BF419D191BB00C6588E /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 09418BF319D191BB00C6588E /* Utils.m */; };
 		09418BF919D194D500C6588E /* UICollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 09418BF819D194D500C6588E /* UICollectionViewWaterfallLayout.m */; };
+		096EDA0319EBA9DC00E1C56F /* CardsViewControllerPOC.m in Sources */ = {isa = PBXBuildFile; fileRef = 096EDA0219EBA9DC00E1C56F /* CardsViewControllerPOC.m */; };
 		0985061019D2EE1F00E64E53 /* FilmHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0985060F19D2EE1F00E64E53 /* FilmHomeViewController.m */; };
+		0996A59D19ED307A00932672 /* libFilmSync.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0996A59C19ED307A00932672 /* libFilmSync.a */; };
 		09A18E7719C3175F00DFFD62 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A18E7619C3175F00DFFD62 /* Foundation.framework */; };
 		09A18E7919C3175F00DFFD62 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A18E7819C3175F00DFFD62 /* CoreGraphics.framework */; };
 		09A18E7B19C3175F00DFFD62 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A18E7A19C3175F00DFFD62 /* UIKit.framework */; };
@@ -68,7 +70,26 @@
 		09A18ED819C3185A00DFFD62 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A18ED319C3185A00DFFD62 /* CoreFoundation.framework */; };
 		09A18EDB19C3189900DFFD62 /* CardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A18EDA19C3189900DFFD62 /* CardsViewController.m */; };
 		09A18EDD19C3214900DFFD62 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A18EDC19C3214900DFFD62 /* libc++.dylib */; };
-		09D34AC719D42CF40061F0D2 /* libFilmSync.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09D34AC619D42CF40061F0D2 /* libFilmSync.a */; };
+		09B17BE619F4E69C0026E06D /* GCArraySectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B17BD919F4E69C0026E06D /* GCArraySectionController.m */; };
+		09B17BE719F4E69C0026E06D /* GCRetractableSectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B17BDC19F4E69C0026E06D /* GCRetractableSectionController.m */; };
+		09B17BE819F4E69C0026E06D /* DownAccessory.png in Resources */ = {isa = PBXBuildFile; fileRef = 09B17BDE19F4E69C0026E06D /* DownAccessory.png */; };
+		09B17BE919F4E69C0026E06D /* DownAccessory@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09B17BDF19F4E69C0026E06D /* DownAccessory@2x.png */; };
+		09B17BEA19F4E69C0026E06D /* DownAccessoryWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 09B17BE019F4E69C0026E06D /* DownAccessoryWhite.png */; };
+		09B17BEB19F4E69C0026E06D /* DownAccessoryWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09B17BE119F4E69C0026E06D /* DownAccessoryWhite@2x.png */; };
+		09B17BEC19F4E69C0026E06D /* UpAccessory.png in Resources */ = {isa = PBXBuildFile; fileRef = 09B17BE219F4E69C0026E06D /* UpAccessory.png */; };
+		09B17BED19F4E69C0026E06D /* UpAccessory@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09B17BE319F4E69C0026E06D /* UpAccessory@2x.png */; };
+		09B17BEE19F4E69C0026E06D /* UpAccessoryWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 09B17BE419F4E69C0026E06D /* UpAccessoryWhite.png */; };
+		09B17BEF19F4E69C0026E06D /* UpAccessoryWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09B17BE519F4E69C0026E06D /* UpAccessoryWhite@2x.png */; };
+		09B17BF219F4E7200026E06D /* ProjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B17BF119F4E7200026E06D /* ProjectListViewController.m */; };
+		09B17BFA19F5422D0026E06D /* CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B17BF619F5422D0026E06D /* CoreData.m */; };
+		09B17BFB19F5422D0026E06D /* CoreDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B17BF819F5422D0026E06D /* CoreDataAdditions.m */; };
+		09B17BFE19F542E60026E06D /* FilmSyncModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 09B17BFC19F542E60026E06D /* FilmSyncModel.xcdatamodeld */; };
+		09B17C0119F5469F0026E06D /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B17C0019F5469F0026E06D /* Project.m */; };
+		09B17C0419F546A00026E06D /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B17C0319F546A00026E06D /* Card.m */; };
+		09B5820A19EFF44400795F9D /* camera_button_take.png in Resources */ = {isa = PBXBuildFile; fileRef = 09B5820619EFF44400795F9D /* camera_button_take.png */; };
+		09B5820B19EFF44400795F9D /* camera_button_take@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09B5820719EFF44400795F9D /* camera_button_take@2x.png */; };
+		09B5820C19EFF44400795F9D /* tabBar_cameraButton_ready_matte.png in Resources */ = {isa = PBXBuildFile; fileRef = 09B5820819EFF44400795F9D /* tabBar_cameraButton_ready_matte.png */; };
+		09B5820D19EFF44400795F9D /* tabBar_cameraButton_ready_matte@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09B5820919EFF44400795F9D /* tabBar_cameraButton_ready_matte@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,8 +140,12 @@
 		09418BF319D191BB00C6588E /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		09418BF719D194D500C6588E /* UICollectionViewWaterfallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICollectionViewWaterfallLayout.h; sourceTree = "<group>"; };
 		09418BF819D194D500C6588E /* UICollectionViewWaterfallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICollectionViewWaterfallLayout.m; sourceTree = "<group>"; };
+		096EDA0119EBA9DC00E1C56F /* CardsViewControllerPOC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardsViewControllerPOC.h; sourceTree = "<group>"; };
+		096EDA0219EBA9DC00E1C56F /* CardsViewControllerPOC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardsViewControllerPOC.m; sourceTree = "<group>"; };
 		0985060E19D2EE1F00E64E53 /* FilmHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilmHomeViewController.h; sourceTree = "<group>"; };
 		0985060F19D2EE1F00E64E53 /* FilmHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilmHomeViewController.m; sourceTree = "<group>"; };
+		0996A59C19ED307A00932672 /* libFilmSync.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFilmSync.a; sourceTree = "<group>"; };
+		0996A59E19ED308300932672 /* FilmSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilmSync.h; path = FilmSync/FilmSync.h; sourceTree = "<group>"; };
 		09A18E7319C3175F00DFFD62 /* FilmSyncDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilmSyncDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09A18E7619C3175F00DFFD62 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		09A18E7819C3175F00DFFD62 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -158,8 +183,33 @@
 		09A18ED919C3189900DFFD62 /* CardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardsViewController.h; sourceTree = "<group>"; };
 		09A18EDA19C3189900DFFD62 /* CardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardsViewController.m; sourceTree = "<group>"; };
 		09A18EDC19C3214900DFFD62 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
-		09D34AC519D42CEB0061F0D2 /* FilmSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilmSync.h; sourceTree = "<group>"; };
-		09D34AC619D42CF40061F0D2 /* libFilmSync.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFilmSync.a; sourceTree = "<group>"; };
+		09B17BD819F4E69C0026E06D /* GCArraySectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCArraySectionController.h; sourceTree = "<group>"; };
+		09B17BD919F4E69C0026E06D /* GCArraySectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCArraySectionController.m; sourceTree = "<group>"; };
+		09B17BDB19F4E69C0026E06D /* GCRetractableSectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCRetractableSectionController.h; sourceTree = "<group>"; };
+		09B17BDC19F4E69C0026E06D /* GCRetractableSectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCRetractableSectionController.m; sourceTree = "<group>"; };
+		09B17BDE19F4E69C0026E06D /* DownAccessory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DownAccessory.png; sourceTree = "<group>"; };
+		09B17BDF19F4E69C0026E06D /* DownAccessory@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DownAccessory@2x.png"; sourceTree = "<group>"; };
+		09B17BE019F4E69C0026E06D /* DownAccessoryWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DownAccessoryWhite.png; sourceTree = "<group>"; };
+		09B17BE119F4E69C0026E06D /* DownAccessoryWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DownAccessoryWhite@2x.png"; sourceTree = "<group>"; };
+		09B17BE219F4E69C0026E06D /* UpAccessory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UpAccessory.png; sourceTree = "<group>"; };
+		09B17BE319F4E69C0026E06D /* UpAccessory@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UpAccessory@2x.png"; sourceTree = "<group>"; };
+		09B17BE419F4E69C0026E06D /* UpAccessoryWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UpAccessoryWhite.png; sourceTree = "<group>"; };
+		09B17BE519F4E69C0026E06D /* UpAccessoryWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UpAccessoryWhite@2x.png"; sourceTree = "<group>"; };
+		09B17BF019F4E7200026E06D /* ProjectListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectListViewController.h; sourceTree = "<group>"; };
+		09B17BF119F4E7200026E06D /* ProjectListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectListViewController.m; sourceTree = "<group>"; };
+		09B17BF519F5422D0026E06D /* CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreData.h; sourceTree = "<group>"; };
+		09B17BF619F5422D0026E06D /* CoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreData.m; sourceTree = "<group>"; };
+		09B17BF719F5422D0026E06D /* CoreDataAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataAdditions.h; sourceTree = "<group>"; };
+		09B17BF819F5422D0026E06D /* CoreDataAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataAdditions.m; sourceTree = "<group>"; };
+		09B17BFD19F542E60026E06D /* FilmSyncModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FilmSyncModel.xcdatamodel; sourceTree = "<group>"; };
+		09B17BFF19F5469F0026E06D /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
+		09B17C0019F5469F0026E06D /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
+		09B17C0219F546A00026E06D /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
+		09B17C0319F546A00026E06D /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
+		09B5820619EFF44400795F9D /* camera_button_take.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_button_take.png; sourceTree = "<group>"; };
+		09B5820719EFF44400795F9D /* camera_button_take@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera_button_take@2x.png"; sourceTree = "<group>"; };
+		09B5820819EFF44400795F9D /* tabBar_cameraButton_ready_matte.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBar_cameraButton_ready_matte.png; sourceTree = "<group>"; };
+		09B5820919EFF44400795F9D /* tabBar_cameraButton_ready_matte@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabBar_cameraButton_ready_matte@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,7 +225,7 @@
 				09A18ED819C3185A00DFFD62 /* CoreFoundation.framework in Frameworks */,
 				09A18E7919C3175F00DFFD62 /* CoreGraphics.framework in Frameworks */,
 				09A18E7B19C3175F00DFFD62 /* UIKit.framework in Frameworks */,
-				09D34AC719D42CF40061F0D2 /* libFilmSync.a in Frameworks */,
+				0996A59D19ED307A00932672 /* libFilmSync.a in Frameworks */,
 				09A18E7719C3175F00DFFD62 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,6 +272,10 @@
 				09418BEE19D18EAF00C6588E /* TwitterSearchViewControllerTest.m */,
 				0985060E19D2EE1F00E64E53 /* FilmHomeViewController.h */,
 				0985060F19D2EE1F00E64E53 /* FilmHomeViewController.m */,
+				096EDA0119EBA9DC00E1C56F /* CardsViewControllerPOC.h */,
+				096EDA0219EBA9DC00E1C56F /* CardsViewControllerPOC.m */,
+				09B17BF019F4E7200026E06D /* ProjectListViewController.h */,
+				09B17BF119F4E7200026E06D /* ProjectListViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -289,6 +343,7 @@
 		09418BF519D1947000C6588E /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				09B17BD719F4E69C0026E06D /* ExpandingTable */,
 				09418BF619D194BF00C6588E /* UICollectionViewWaterfallLayout */,
 			);
 			name = Libraries;
@@ -348,6 +403,7 @@
 				0941007B19CAA5A000E806F6 /* Delegate */,
 				0941007A19CAA56A00E806F6 /* Controllers */,
 				0941007919CAA56100E806F6 /* Views */,
+				09B17BF319F5422D0026E06D /* CoreData */,
 				09418BF119D191AA00C6588E /* Utils */,
 				09A18EAE19C317D000DFFD62 /* FilmSyncLib */,
 				09418BF519D1947000C6588E /* Libraries */,
@@ -390,7 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				09A18EAF19C317D000DFFD62 /* include */,
-				09D34AC619D42CF40061F0D2 /* libFilmSync.a */,
+				0996A59C19ED307A00932672 /* libFilmSync.a */,
 			);
 			path = FilmSyncLib;
 			sourceTree = "<group>";
@@ -398,17 +454,9 @@
 		09A18EAF19C317D000DFFD62 /* include */ = {
 			isa = PBXGroup;
 			children = (
-				09A18EB019C317D000DFFD62 /* FilmSync */,
+				0996A59E19ED308300932672 /* FilmSync.h */,
 			);
 			path = include;
-			sourceTree = "<group>";
-		};
-		09A18EB019C317D000DFFD62 /* FilmSync */ = {
-			isa = PBXGroup;
-			children = (
-				09D34AC519D42CEB0061F0D2 /* FilmSync.h */,
-			);
-			path = FilmSync;
 			sourceTree = "<group>";
 		};
 		09A18EB619C317F200DFFD62 /* Resources */ = {
@@ -424,6 +472,10 @@
 		09A18EB719C317FA00DFFD62 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				09B5820619EFF44400795F9D /* camera_button_take.png */,
+				09B5820719EFF44400795F9D /* camera_button_take@2x.png */,
+				09B5820819EFF44400795F9D /* tabBar_cameraButton_ready_matte.png */,
+				09B5820919EFF44400795F9D /* tabBar_cameraButton_ready_matte@2x.png */,
 				09A18EB819C3180500DFFD62 /* Cards */,
 			);
 			name = Images;
@@ -444,6 +496,73 @@
 				09A18EC419C3181900DFFD62 /* HTTYD2_UpperFly.jpg */,
 			);
 			name = Cards;
+			sourceTree = "<group>";
+		};
+		09B17BD719F4E69C0026E06D /* ExpandingTable */ = {
+			isa = PBXGroup;
+			children = (
+				09B17BD819F4E69C0026E06D /* GCArraySectionController.h */,
+				09B17BD919F4E69C0026E06D /* GCArraySectionController.m */,
+				09B17BDA19F4E69C0026E06D /* GCRetractableSectionController */,
+			);
+			path = ExpandingTable;
+			sourceTree = "<group>";
+		};
+		09B17BDA19F4E69C0026E06D /* GCRetractableSectionController */ = {
+			isa = PBXGroup;
+			children = (
+				09B17BDB19F4E69C0026E06D /* GCRetractableSectionController.h */,
+				09B17BDC19F4E69C0026E06D /* GCRetractableSectionController.m */,
+				09B17BDD19F4E69C0026E06D /* Images */,
+			);
+			path = GCRetractableSectionController;
+			sourceTree = "<group>";
+		};
+		09B17BDD19F4E69C0026E06D /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				09B17BDE19F4E69C0026E06D /* DownAccessory.png */,
+				09B17BDF19F4E69C0026E06D /* DownAccessory@2x.png */,
+				09B17BE019F4E69C0026E06D /* DownAccessoryWhite.png */,
+				09B17BE119F4E69C0026E06D /* DownAccessoryWhite@2x.png */,
+				09B17BE219F4E69C0026E06D /* UpAccessory.png */,
+				09B17BE319F4E69C0026E06D /* UpAccessory@2x.png */,
+				09B17BE419F4E69C0026E06D /* UpAccessoryWhite.png */,
+				09B17BE519F4E69C0026E06D /* UpAccessoryWhite@2x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		09B17BF319F5422D0026E06D /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				09B17BF419F5422D0026E06D /* DataBase Handler */,
+				09B17BF919F5422D0026E06D /* Models */,
+				09B17BFC19F542E60026E06D /* FilmSyncModel.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		09B17BF419F5422D0026E06D /* DataBase Handler */ = {
+			isa = PBXGroup;
+			children = (
+				09B17BF519F5422D0026E06D /* CoreData.h */,
+				09B17BF619F5422D0026E06D /* CoreData.m */,
+				09B17BF719F5422D0026E06D /* CoreDataAdditions.h */,
+				09B17BF819F5422D0026E06D /* CoreDataAdditions.m */,
+			);
+			path = "DataBase Handler";
+			sourceTree = "<group>";
+		};
+		09B17BF919F5422D0026E06D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				09B17C0219F546A00026E06D /* Card.h */,
+				09B17C0319F546A00026E06D /* Card.m */,
+				09B17BFF19F5469F0026E06D /* Project.h */,
+				09B17C0019F5469F0026E06D /* Project.m */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -490,7 +609,7 @@
 		09A18E6B19C3175F00DFFD62 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = Fingent;
 				TargetAttributes = {
 					09A18E9619C3175F00DFFD62 = {
@@ -532,21 +651,31 @@
 				09A18E8D19C3175F00DFFD62 /* Main_iPad.storyboard in Resources */,
 				094100A819CAA9C100E806F6 /* calendar.png in Resources */,
 				09A18E9219C3175F00DFFD62 /* Images.xcassets in Resources */,
+				09B5820B19EFF44400795F9D /* camera_button_take@2x.png in Resources */,
 				094100AD19CAA9C100E806F6 /* tag.png in Resources */,
 				094100A219CAA9C100E806F6 /* calendar_photo.jpg in Resources */,
+				09B17BE919F4E69C0026E06D /* DownAccessory@2x.png in Resources */,
 				094100B019CAAC4100E806F6 /* MainStoryboard_iPad.storyboard in Resources */,
 				09A18EC719C3181900DFFD62 /* HTTYD2_FlyoverSea.jpg in Resources */,
+				09B17BEE19F4E69C0026E06D /* UpAccessoryWhite.png in Resources */,
 				09A18ECC19C3181900DFFD62 /* HTTYD2_Hiccup_Toothless.jpg in Resources */,
 				094100A419CAA9C100E806F6 /* menu.png in Resources */,
+				09B5820C19EFF44400795F9D /* tabBar_cameraButton_ready_matte.png in Resources */,
 				09A18ECA19C3181900DFFD62 /* HTTYD2_grpFly.jpg in Resources */,
 				094100A619CAA9C100E806F6 /* nav_bg.png in Resources */,
 				09A18EC819C3181900DFFD62 /* HTTYD2_FlyOverSea2.jpg in Resources */,
+				09B5820D19EFF44400795F9D /* tabBar_cameraButton_ready_matte@2x.png in Resources */,
+				09B17BEC19F4E69C0026E06D /* UpAccessory.png in Resources */,
+				09B17BED19F4E69C0026E06D /* UpAccessory@2x.png in Resources */,
 				094100AB19CAA9C100E806F6 /* news.png in Resources */,
 				094100A019CAA9C100E806F6 /* bookmark_photo.jpg in Resources */,
 				09A18EC619C3181900DFFD62 /* HTTYD2_Cover3.png in Resources */,
 				09A18EBA19C3181100DFFD62 /* Cards.json in Resources */,
+				09B17BEA19F4E69C0026E06D /* DownAccessoryWhite.png in Resources */,
 				094100AE19CAA9C100E806F6 /* wishlist.png in Resources */,
 				09A18ECB19C3181900DFFD62 /* HTTYD2_SkyFly.jpg in Resources */,
+				09B5820A19EFF44400795F9D /* camera_button_take.png in Resources */,
+				09B17BEF19F4E69C0026E06D /* UpAccessoryWhite@2x.png in Resources */,
 				09A18E8A19C3175F00DFFD62 /* Main_iPhone.storyboard in Resources */,
 				09A18EC519C3181900DFFD62 /* HTTYD2_Cover1.jpg in Resources */,
 				09A18E8119C3175F00DFFD62 /* InfoPlist.strings in Resources */,
@@ -555,7 +684,9 @@
 				09418BE519D13DCF00C6588E /* placeholder_icon.png in Resources */,
 				09A18ECD19C3181900DFFD62 /* HTTYD2_Hiccuo_Toothless_OnGrass.jpg in Resources */,
 				0941009F19CAA9C100E806F6 /* comments_photo.jpg in Resources */,
+				09B17BE819F4E69C0026E06D /* DownAccessory.png in Resources */,
 				094100A519CAA9C100E806F6 /* menu@2x.png in Resources */,
+				09B17BEB19F4E69C0026E06D /* DownAccessoryWhite@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,17 +706,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				09418BEC19D18C8F00C6588E /* TweetCell.m in Sources */,
+				09B17BFB19F5422D0026E06D /* CoreDataAdditions.m in Sources */,
 				09418BF419D191BB00C6588E /* Utils.m in Sources */,
 				09418BE819D1539A00C6588E /* TwitterSearchViewController.m in Sources */,
+				096EDA0319EBA9DC00E1C56F /* CardsViewControllerPOC.m in Sources */,
+				09B17BF219F4E7200026E06D /* ProjectListViewController.m in Sources */,
+				09B17BE619F4E69C0026E06D /* GCArraySectionController.m in Sources */,
 				0941008719CAA95300E806F6 /* SidebarViewController.m in Sources */,
 				09A18EDB19C3189900DFFD62 /* CardsViewController.m in Sources */,
+				09B17C0419F546A00026E06D /* Card.m in Sources */,
+				09B17BFA19F5422D0026E06D /* CoreData.m in Sources */,
 				0985061019D2EE1F00E64E53 /* FilmHomeViewController.m in Sources */,
 				09A18E8719C3175F00DFFD62 /* AppDelegate.m in Sources */,
+				09B17C0119F5469F0026E06D /* Project.m in Sources */,
+				09B17BFE19F542E60026E06D /* FilmSyncModel.xcdatamodeld in Sources */,
 				0941008D19CAA96E00E806F6 /* SWRevealViewController.m in Sources */,
 				09418BF919D194D500C6588E /* UICollectionViewWaterfallLayout.m in Sources */,
 				09418BEF19D18EAF00C6588E /* TwitterSearchViewControllerTest.m in Sources */,
 				09A18E8319C3175F00DFFD62 /* main.m in Sources */,
 				0941008619CAA95300E806F6 /* MainViewController.m in Sources */,
+				09B17BE719F4E69C0026E06D /* GCRetractableSectionController.m in Sources */,
 				0941008919CAA95300E806F6 /* PhotoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -719,20 +859,26 @@
 		09A18EA919C3175F00DFFD62 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Suresh Subburam (3D8G8JVQSW)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Fingent Corp (XU3XTNFKT8)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FilmSyncDemo/FilmSyncDemo-Prefix.pch";
 				INFOPLIST_FILE = "FilmSyncDemo/FilmSyncDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FilmSyncDemo/FilmSyncLib",
 					"$(PROJECT_DIR)/FilmSyncDemo/FilmSyncLib/include",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1a09555f-6b13-46de-9d58-67ffc0707202";
+				PROVISIONING_PROFILE = "1c730334-1be9-4d58-89ff-1ef94670d25b";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -740,20 +886,25 @@
 		09A18EAA19C3175F00DFFD62 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					armv7,
+					armv7s,
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Suresh Subburam (3D8G8JVQSW)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Fingent Corp (XU3XTNFKT8)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FilmSyncDemo/FilmSyncDemo-Prefix.pch";
 				INFOPLIST_FILE = "FilmSyncDemo/FilmSyncDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FilmSyncDemo/FilmSyncLib",
 					"$(PROJECT_DIR)/FilmSyncDemo/FilmSyncLib/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1a09555f-6b13-46de-9d58-67ffc0707202";
+				PROVISIONING_PROFILE = "1c730334-1be9-4d58-89ff-1ef94670d25b";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -829,6 +980,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		09B17BFC19F542E60026E06D /* FilmSyncModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				09B17BFD19F542E60026E06D /* FilmSyncModel.xcdatamodel */,
+			);
+			currentVersion = 09B17BFD19F542E60026E06D /* FilmSyncModel.xcdatamodel */;
+			path = FilmSyncModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 09A18E6B19C3175F00DFFD62 /* Project object */;
 }
