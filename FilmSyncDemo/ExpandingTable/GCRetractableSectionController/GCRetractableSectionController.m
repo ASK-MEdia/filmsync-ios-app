@@ -37,6 +37,8 @@
 		self.open = NO;
         self.useOnlyWhiteImages = NO;
         self.rowAnimation = UITableViewRowAnimationTop;
+        self.titleTextColor = [UIColor whiteColor];
+        self.titleAlternativeTextColor = [UIColor lightGrayColor];
 	}
 	return self;
 }
@@ -77,47 +79,117 @@
 }
 
 - (UITableViewCell *) titleCell {
-	NSString* titleCellIdentifier = [NSStringFromClass([self class]) stringByAppendingString:@"title"];
-	
+	//NSString* titleCellIdentifier = [NSStringFromClass([self class]) stringByAppendingString:@"title"];
+    NSString* titleCellIdentifier = @"title";
 	UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:titleCellIdentifier];
 	if (cell == nil) {
 		//cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:titleCellIdentifier] autorelease];
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:titleCellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:titleCellIdentifier];
+        
+        //Separator
+        /*UIImage *sepImg = [UIImage imageNamed:@"sep.png"];
+        UIImageView *sepImgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 49, cell.contentView.frame.size.width, 2)];
+        [sepImgV setImage:sepImg];
+        [cell.contentView addSubview:sepImgV];*/
+        
+        //[cell.textLabel setNumberOfLines:2];
+        //cell.textLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+        //[cell.textLabel setFrame:CGRectMake(0, 0, cell.contentView.frame.size.width - 60, cell.contentView.frame.size.height)];
+        //[cell.detailTextLabel setFont:[UIFont systemFontOfSize:8.0]];
+        //[cell.detailTextLabel setTextColor:[UIColor lightGrayColor]];
 	}
+    
+    UILabel *titleLbl = (UILabel *)[cell viewWithTag:1003];
+    UILabel *cardCountLbl = (UILabel *)[cell viewWithTag:1004];
 	
-	cell.textLabel.text = self.title;
+	titleLbl.text = self.title;
 	if (self.contentNumberOfRow >= 2) {
-		cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%i items",), self.contentNumberOfRow];
-		cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+		cardCountLbl.text = [NSString stringWithFormat:NSLocalizedString(@"%i Cards",), self.contentNumberOfRow];
+		cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [self setAccessoryViewOnCell:cell];
 	}
     else if (self.contentNumberOfRow == 1)
     {
-        cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"1 item",)];
-        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+        cardCountLbl.text = [NSString stringWithFormat:NSLocalizedString(@"1 Card",)];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [self setAccessoryViewOnCell:cell];
     }
 	else {
-		cell.detailTextLabel.text = NSLocalizedString(@"No item",);
+		cardCountLbl.text = NSLocalizedString(@"No Card",);
 		cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.accessoryView = nil;
-        cell.textLabel.textColor = [UIColor blackColor];
+        titleLbl.textColor = [UIColor blackColor];
 	}
     [cell setBackgroundColor:[UIColor clearColor]];
 	return cell;
 }
 
 - (UITableViewCell *) contentCellForRow:(NSUInteger)row {
-	NSString* contentCellIdentifier = [NSStringFromClass([self class]) stringByAppendingString:@"content"];
-	
+	//NSString* contentCellIdentifier = [NSStringFromClass([self class]) stringByAppendingString:@"content"];
+	NSString* contentCellIdentifier =@"content";
 	UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:contentCellIdentifier];
 	if (cell == nil) {
 		//cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:contentCellIdentifier] autorelease];
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:contentCellIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.indentationLevel = 1;
+        
+        //Separator
+        /*
+        UIImage *sepImg = [UIImage imageNamed:@"sep.png"];
+        UIImageView *sepImgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 49, cell.contentView.frame.size.width, 2)];
+        [sepImgV setImage:sepImg];
+        sepImgV.translatesAutoresizingMaskIntoConstraints = NO;
+        //[sepImgV setBackgroundColor:[UIColor blackColor]];
+        [sepImgV setTag:2];
+        [cell.contentView addSubview:sepImgV];
+        
+        ////[sepImgV addConstraints:[NSLayoutConstraint
+                                 constraintsWithVisualFormat:@"V:[cell]-offsetTop-[sepImgV]"
+                                 options:0
+                                 metrics:@{@"offsetTop": @49}
+                                 views:NSDictionaryOfVariableBindings(sepImgV,cell)]];///
+        [sepImgV addConstraint:[NSLayoutConstraint constraintWithItem:sepImgV
+                                                             attribute:NSLayoutAttributeLeading
+                                                             relatedBy:NSLayoutRelationEqual
+                                                                toItem:cell.contentView
+                                                             attribute:NSLayoutAttributeLeadingMargin
+                                                            multiplier:0
+                                                              constant:-6.0]];
+        [sepImgV addConstraint:[NSLayoutConstraint constraintWithItem:sepImgV
+                                                            attribute:NSLayoutAttributeTrailing
+                                                            relatedBy:NSLayoutRelationEqual
+                                                               toItem:cell.contentView
+                                                            attribute:NSLayoutAttributeTrailingMargin
+                                                           multiplier:0
+                                                             constant:-6.0]];
+        [sepImgV addConstraint:[NSLayoutConstraint constraintWithItem:sepImgV
+                                                            attribute:NSLayoutAttributeTop
+                                                            relatedBy:NSLayoutRelationEqual
+                                                               toItem:cell.contentView
+                                                            attribute:NSLayoutAttributeTopMargin
+                                                           multiplier:0
+                                                             constant:49]];
+        [sepImgV addConstraint:[NSLayoutConstraint constraintWithItem:sepImgV
+                                                            attribute:NSLayoutAttributeBottom
+                                                            relatedBy:NSLayoutRelationEqual
+                                                               toItem:cell.contentView
+                                                            attribute:NSLayoutAttributeBottomMargin
+                                                           multiplier:0
+                                                             constant:0]];*/
+        /*
+        "<NSLayoutConstraint:0x79e3f410 UILabel:0x79e41f70'Project List Screen'.leading == UIView:0x7b2297b0.leadingMargin - 6>",
+        "<NSLayoutConstraint:0x79e3f470 UIView:0x7b2297b0.trailingMargin == UILabel:0x79e41f70'Project List Screen'.trailing - 6>",
+        "<NSLayoutConstraint:0x79e3f4a0 UIView:0x7b2297b0.centerX == UILabel:0x79e41f70'Project List Screen'.centerX>"*/
+        
+        
+        //<NSLayoutConstraint:0x7a9b6580 UILabel:0x7ac80790'Project List Screen'.leading == UIView:0x7a9b22d0.leadingMargin - 6>",
 	}
-	
+   // UIImageView *sepImgV = (UIImageView *)[cell viewWithTag:2];
+    //[sepImgV setFrame:CGRectMake(0, 49, cell.contentView.frame.size.width, 2)];
+    
+	//cell.textLabel.textColor =[UIColor colorWithRed:55 green:100 blue:125 alpha:1];
 	cell.textLabel.text = [self titleContentForRow:row];
 	return cell;
 }
@@ -186,6 +258,9 @@
 	[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (void) didSelectContentCellAtRow:(NSUInteger)row {}
+- (void) didSelectContentCellAtRow:(NSUInteger)row
+{
+
+}
 
 @end

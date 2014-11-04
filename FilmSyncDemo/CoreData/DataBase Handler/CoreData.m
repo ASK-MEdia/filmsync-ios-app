@@ -19,7 +19,7 @@ static CoreData *sharedObject;
     if(!sharedObject)
     {
         sharedObject = [[CoreData alloc]init];
-        sharedObject.dataModelName = @"esLoggingModel";
+        sharedObject.dataModelName = @"FilmSyncModel";
     }
     return sharedObject;
 }

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "CardsViewControllerPOC.h"
 
 @implementation AppDelegate
 
@@ -14,8 +15,9 @@
 {
     // Override point for customization after application launch.
     
+    [application setIdleTimerDisabled:YES];
     
-    // Slide Menu 
+    /*// Slide Menu
     // Change the background color of navigation bar
     [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
     
@@ -27,7 +29,13 @@
                                                            [UIColor colorWithRed:10.0/255.0 green:10.0/255.0 blue:10.0/255.0 alpha:1.0], NSForegroundColorAttributeName,
                                                            shadow, NSShadowAttributeName,
                                                            [UIFont fontWithName:@"Helvetica-Light" size:21.0], NSFontAttributeName, nil]];
+     */
     //self.centerButton = nil;
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [[UITabBar appearance] setTintColor:[UIColor redColor]];
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:142.0f/255.0f green:213.0f/255.0f blue:255.0f/255.0f alpha:1], NSForegroundColorAttributeName, nil] forState:UIControlStateSelected];
     self.isCenterButtonAdded = NO;
     return YES;
 }
@@ -36,14 +44,15 @@
 {
     if (!self.isCenterButtonAdded)
     {
-        [self addCenterButtonWithImage:[UIImage imageNamed:@"camera_button_take.png"] highlightImage:[UIImage imageNamed:@"tabBar_cameraButton_ready_matte.png"] controller:VC];
+        [self addCenterButtonWithImage:[UIImage imageNamed:@"tabIcon_Sync.png"] highlightImage:[UIImage imageNamed:@"tabIcon_Sync_Selected.png"] controller:VC];
+        
     }
     
 }
 
 -(void) addCenterButtonWithImage:(UIImage*)buttonImage highlightImage:(UIImage*)highlightImage controller:(UIViewController *)VC
 {
-    NSLog(@"addCenterButtonWithImage ");
+    NSLog(@"addCenterButtonWithImage H:%f W:%f",buttonImage.size.height,buttonImage.size.width);
     self.tabBarVC = VC.tabBarController;
     self.centerButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.centerButton.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
@@ -64,14 +73,44 @@
     
     [VC.tabBarController.view addSubview:self.centerButton];
     self.isCenterButtonAdded = YES;
+    
+    NSLog(@"tab Items :%@",[self.tabBarVC.tabBar items]);
+    NSArray *tabItemsArray = [self.tabBarVC.tabBar items];
+    
+    UITabBarItem *helpTabItem = [tabItemsArray objectAtIndex:2];
+    UIImage *HelpIconImg = [UIImage imageNamed:@"tabIcon_Help.png"];
+    HelpIconImg = [HelpIconImg imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIImage *HelpIconImgSel = [UIImage imageNamed:@"tabIcon_Help_Selected.png"];
+    HelpIconImgSel = [HelpIconImgSel imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    //self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Help" image:HelpIconImg selectedImage:HelpIconImg];
+    [helpTabItem setImage:HelpIconImg];
+    [helpTabItem setSelectedImage:HelpIconImgSel];
+    UITabBarItem *listTabItem = [tabItemsArray objectAtIndex:0];
+    UIImage *listIconImg = [UIImage imageNamed:@"tabIcon_ProjectList.png"];
+    listIconImg = [listIconImg imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIImage *listIconImgSel = [UIImage imageNamed:@"tabIcon_ProjectList_Selected.png"];
+    listIconImgSel = [listIconImgSel imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    //self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Help" image:HelpIconImg selectedImage:HelpIconImg];
+    [listTabItem setImage:listIconImg];
+    [listTabItem setSelectedImage:listIconImgSel];
+    
+    //[self.tabBarVC.tabBar setTintColor:[UIColor whiteColor]];
+    //[self.tabBarVC.tabBar setSelectedImageTintColor:[UIColor whiteColor]];
+    //[self.tabBarVC.tabBar set
+    
+    //[[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
+    
+    
 }
 
 -(void) CenterButtonPressed :(UIButton *)btn
 {
     //[btn setSelected:!btn.isSelected];
     
+    [[CardsViewControllerPOC sharedInstance] clearCardView];
     NSLog(@"btn.isSelected : %d",btn.isSelected);
     [self.tabBarVC setSelectedIndex:1];
+    
     
 }
 
@@ -146,27 +185,32 @@
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    [application setIdleTimerDisabled:NO];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [application setIdleTimerDisabled:NO];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [application setIdleTimerDisabled:YES];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [application setIdleTimerDisabled:YES];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [application setIdleTimerDisabled:NO];
 }
 
 @end

@@ -2,7 +2,7 @@
 //  Card.m
 //  FilmSyncDemo
 //
-//  Created by Abdusha on 10/20/14.
+//  Created by Abdusha on 10/22/14.
 //  Copyright (c) 2014 Fingent. All rights reserved.
 //
 
@@ -13,8 +13,8 @@
 @implementation Card
 
 @dynamic cardID;
-@dynamic title;
 @dynamic content;
+@dynamic title;
 @dynamic project;
 
 @end
