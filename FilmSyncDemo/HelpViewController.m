@@ -24,15 +24,9 @@
     self.pageController.dataSource = self;
     CGRect viewFrame = [[self view] bounds];
     [[self.pageController view] setFrame:CGRectMake(0.0, 0.0,viewFrame.size.width,viewFrame.size.height - 10)];
-    //[[self.pageController view] setFrame:[[self view] bounds]];
-    //self.pageViewController.view.frame = CGRectMake(0.0, 0.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height + 10.0);
-    
     HelpPageViewController *initialViewController = [self viewControllerAtIndex:0];
-    
     NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
-    
     [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-    
     [self addChildViewController:self.pageController];
     [[self view] addSubview:[self.pageController view]];
     [self.pageController didMoveToParentViewController:self];
@@ -51,8 +45,6 @@
     
     // 3. Get the controller from the storyboard.
     HelpPageViewController *childViewController = (HelpPageViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"HelpPage"];
-    //[[self storyboard] ];
-    //HelpPageViewController *childViewController = [[HelpPageViewController alloc] initWithNibName:@"HelpPageViewController" bundle:nil];
     childViewController.index = index;
     
     //HelpPage

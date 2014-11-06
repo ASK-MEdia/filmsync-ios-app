@@ -41,9 +41,11 @@
 - (IBAction)tweetButtonPressed:(id)sender;
 
 -(void)newMarkerReceived:(NSString *)marker;
--(NSDictionary *)getDataForMarker:(NSString *)marker;
--(void)getMarkerDict;
+//-(NSDictionary *)getDataForMarker:(NSString *)marker;
+//-(void)getMarkerDict;
 
 -(void)clearCardView;
+
+-(void)addNumber:(int)number1 withNumber:(int)number2 andCompletionHandler:(void (^)(int result))completionHandler;
 
 @end

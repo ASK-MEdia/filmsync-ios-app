@@ -15,27 +15,14 @@
 {
     // Override point for customization after application launch.
     
+    //Disable screen autotimeout
     [application setIdleTimerDisabled:YES];
-    
-    /*// Slide Menu
-    // Change the background color of navigation bar
-    [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
-    
-    // Change the font style of the navigation bar
-    NSShadow *shadow = [[NSShadow alloc] init];
-    shadow.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];
-    shadow.shadowOffset = CGSizeMake(0, 0);
-    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
-                                                           [UIColor colorWithRed:10.0/255.0 green:10.0/255.0 blue:10.0/255.0 alpha:1.0], NSForegroundColorAttributeName,
-                                                           shadow, NSShadowAttributeName,
-                                                           [UIFont fontWithName:@"Helvetica-Light" size:21.0], NSFontAttributeName, nil]];
-     */
-    //self.centerButton = nil;
-    
+    //Set white color for status bar
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    [[UITabBar appearance] setTintColor:[UIColor redColor]];
+    //Set tab bar icon's text colors
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:142.0f/255.0f green:213.0f/255.0f blue:255.0f/255.0f alpha:1], NSForegroundColorAttributeName, nil] forState:UIControlStateSelected];
+    
     self.isCenterButtonAdded = NO;
     return YES;
 }
@@ -52,8 +39,9 @@
 
 -(void) addCenterButtonWithImage:(UIImage*)buttonImage highlightImage:(UIImage*)highlightImage controller:(UIViewController *)VC
 {
-    NSLog(@"addCenterButtonWithImage H:%f W:%f",buttonImage.size.height,buttonImage.size.width);
     self.tabBarVC = VC.tabBarController;
+    
+    // Customise center button
     self.centerButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.centerButton.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
     self.centerButton.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
@@ -70,51 +58,43 @@
         center.y = center.y - heightDifference/2.0;
         self.centerButton.center = center;
     }
-    
+    //Add raised center button to tab bar
     [VC.tabBarController.view addSubview:self.centerButton];
+    //Set flag
     self.isCenterButtonAdded = YES;
     
-    NSLog(@"tab Items :%@",[self.tabBarVC.tabBar items]);
+    // Set custom images for tab bar icons
     NSArray *tabItemsArray = [self.tabBarVC.tabBar items];
     
-    UITabBarItem *helpTabItem = [tabItemsArray objectAtIndex:2];
-    UIImage *HelpIconImg = [UIImage imageNamed:@"tabIcon_Help.png"];
-    HelpIconImg = [HelpIconImg imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    UIImage *HelpIconImgSel = [UIImage imageNamed:@"tabIcon_Help_Selected.png"];
-    HelpIconImgSel = [HelpIconImgSel imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    //self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Help" image:HelpIconImg selectedImage:HelpIconImg];
-    [helpTabItem setImage:HelpIconImg];
-    [helpTabItem setSelectedImage:HelpIconImgSel];
+    // Customise left button
     UITabBarItem *listTabItem = [tabItemsArray objectAtIndex:0];
     UIImage *listIconImg = [UIImage imageNamed:@"tabIcon_ProjectList.png"];
     listIconImg = [listIconImg imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UIImage *listIconImgSel = [UIImage imageNamed:@"tabIcon_ProjectList_Selected.png"];
     listIconImgSel = [listIconImgSel imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    //self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Help" image:HelpIconImg selectedImage:HelpIconImg];
     [listTabItem setImage:listIconImg];
     [listTabItem setSelectedImage:listIconImgSel];
     
-    //[self.tabBarVC.tabBar setTintColor:[UIColor whiteColor]];
-    //[self.tabBarVC.tabBar setSelectedImageTintColor:[UIColor whiteColor]];
-    //[self.tabBarVC.tabBar set
-    
-    //[[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
+    // Customise right button
+    UITabBarItem *helpTabItem = [tabItemsArray objectAtIndex:2];
+    UIImage *HelpIconImg = [UIImage imageNamed:@"tabIcon_Help.png"];
+    HelpIconImg = [HelpIconImg imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIImage *HelpIconImgSel = [UIImage imageNamed:@"tabIcon_Help_Selected.png"];
+    HelpIconImgSel = [HelpIconImgSel imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [helpTabItem setImage:HelpIconImg];
+    [helpTabItem setSelectedImage:HelpIconImgSel];
     
     
 }
 
 -(void) CenterButtonPressed :(UIButton *)btn
 {
-    //[btn setSelected:!btn.isSelected];
-    
+    //Setup and load card view
     [[CardsViewControllerPOC sharedInstance] clearCardView];
-    NSLog(@"btn.isSelected : %d",btn.isSelected);
     [self.tabBarVC setSelectedIndex:1];
-    
-    
 }
 
-
+/*
 - (void) rwDataToPlist:(NSString *)fileName playerColor:(NSString *)strPlayer withData:(NSArray *)data
 
 {
@@ -180,7 +160,7 @@
     }
     
 }
-
+*/
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

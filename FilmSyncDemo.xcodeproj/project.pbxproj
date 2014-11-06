@@ -65,6 +65,7 @@
 		09418BEF19D18EAF00C6588E /* TwitterSearchViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 09418BEE19D18EAF00C6588E /* TwitterSearchViewControllerTest.m */; };
 		09418BF419D191BB00C6588E /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 09418BF319D191BB00C6588E /* Utils.m */; };
 		09418BF919D194D500C6588E /* UICollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 09418BF819D194D500C6588E /* UICollectionViewWaterfallLayout.m */; };
+		094961441A0A2B1F00FFCA49 /* FilmSyncWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 094961431A0A2B1F00FFCA49 /* FilmSyncWebService.m */; };
 		096EDA0319EBA9DC00E1C56F /* CardsViewControllerPOC.m in Sources */ = {isa = PBXBuildFile; fileRef = 096EDA0219EBA9DC00E1C56F /* CardsViewControllerPOC.m */; };
 		0985061019D2EE1F00E64E53 /* FilmHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0985060F19D2EE1F00E64E53 /* FilmHomeViewController.m */; };
 		09869E981A0221FD00283D91 /* tabIcon_Help_Selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 09869E921A0221FD00283D91 /* tabIcon_Help_Selected.png */; };
@@ -227,6 +228,8 @@
 		09418BF319D191BB00C6588E /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		09418BF719D194D500C6588E /* UICollectionViewWaterfallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICollectionViewWaterfallLayout.h; sourceTree = "<group>"; };
 		09418BF819D194D500C6588E /* UICollectionViewWaterfallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICollectionViewWaterfallLayout.m; sourceTree = "<group>"; };
+		094961421A0A2B1F00FFCA49 /* FilmSyncWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilmSyncWebService.h; sourceTree = "<group>"; };
+		094961431A0A2B1F00FFCA49 /* FilmSyncWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilmSyncWebService.m; sourceTree = "<group>"; };
 		096EDA0119EBA9DC00E1C56F /* CardsViewControllerPOC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardsViewControllerPOC.h; sourceTree = "<group>"; };
 		096EDA0219EBA9DC00E1C56F /* CardsViewControllerPOC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardsViewControllerPOC.m; sourceTree = "<group>"; };
 		0985060E19D2EE1F00E64E53 /* FilmHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilmHomeViewController.h; sourceTree = "<group>"; };
@@ -420,6 +423,8 @@
 		0941007A19CAA56A00E806F6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				094961421A0A2B1F00FFCA49 /* FilmSyncWebService.h */,
+				094961431A0A2B1F00FFCA49 /* FilmSyncWebService.m */,
 				09A18ED919C3189900DFFD62 /* CardsViewController.h */,
 				09A18EDA19C3189900DFFD62 /* CardsViewController.m */,
 				0941007E19CAA95300E806F6 /* MainViewController.h */,
@@ -976,6 +981,7 @@
 				09A18EDB19C3189900DFFD62 /* CardsViewController.m in Sources */,
 				09B17BFA19F5422D0026E06D /* CoreData.m in Sources */,
 				0985061019D2EE1F00E64E53 /* FilmHomeViewController.m in Sources */,
+				094961441A0A2B1F00FFCA49 /* FilmSyncWebService.m in Sources */,
 				09A18E8719C3175F00DFFD62 /* AppDelegate.m in Sources */,
 				09B17BFE19F542E60026E06D /* FilmSyncModel.xcdatamodeld in Sources */,
 				0941008D19CAA96E00E806F6 /* SWRevealViewController.m in Sources */,
@@ -1122,7 +1128,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Fingent Corp (XU3XTNFKT8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Suresh Subburam (3D8G8JVQSW)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FilmSyncDemo/FilmSyncDemo-Prefix.pch";
 				INFOPLIST_FILE = "FilmSyncDemo/FilmSyncDemo-Info.plist";
@@ -1134,7 +1140,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bab2c6a9-4838-488e-9254-a2c37479624b";
+				PROVISIONING_PROFILE = "eb41e040-eec7-4f52-b81d-962c3d33d1ee";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -1147,7 +1153,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Fingent Corp (XU3XTNFKT8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Suresh Subburam (3D8G8JVQSW)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FilmSyncDemo/FilmSyncDemo-Prefix.pch";
 				INFOPLIST_FILE = "FilmSyncDemo/FilmSyncDemo-Info.plist";
@@ -1158,7 +1164,7 @@
 					"$(PROJECT_DIR)/FilmSyncDemo/FilmSyncLib/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bab2c6a9-4838-488e-9254-a2c37479624b";
+				PROVISIONING_PROFILE = "eb41e040-eec7-4f52-b81d-962c3d33d1ee";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 				WRAPPER_EXTENSION = app;

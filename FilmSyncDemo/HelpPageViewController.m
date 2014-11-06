@@ -29,8 +29,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    //self.screenNumber.text = [NSString stringWithFormat:@"Screen #%li", (long)self.index];
-    
     [self.helpImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"SS_%d.png",self.index]]];
 
 }

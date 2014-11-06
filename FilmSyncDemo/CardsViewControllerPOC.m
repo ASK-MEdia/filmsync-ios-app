@@ -14,6 +14,8 @@
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
 
+#import "FilmSyncWebService.h"
+
 @interface CardsViewControllerPOC ()
 {
     NSString *twitterTagsForCurrentProject;
@@ -95,6 +97,21 @@ static CardsViewControllerPOC *sharedInstance = nil;
     
     [self.contentWebView setDelegate:self];
     
+    /*
+    __block int var = 0;
+    [self addNumber:5 withNumber:7 andCompletionHandler:^(int result) {
+        // We just log the result, no need to do anything else.
+        NSLog(@"The result is %d", result);
+        var = result;
+    }];
+    
+    NSLog(@"The var is %d", var);*/
+    
+    FilmSyncWebService *fsAPI = [FilmSyncWebService sharedInstance];
+    [fsAPI setConnectionURL:@"http://10.10.2.31/filmsync"];
+    [fsAPI setAPISecret:@"1253698547"];
+    
+    
     
 }
 /*
@@ -147,26 +164,9 @@ static CardsViewControllerPOC *sharedInstance = nil;
 {
     
     [self.syncWaveImageView startAnimating];
-    //[self.syncStatusLabel setText:@"Listening..."];
-    //Fetch from loacal
-    //[self getMarkerDict];
-    
-    //Fetch from Server
-    //[self getAllCardsFromServer];
-    
-    //moving to viewDidLoad
-    /*
-    NSLog(@"startListener");
-    FilmSync *filmSync = [FilmSync sharedFilmSyncManager];
-    [filmSync setDelegate:self];
-    [filmSync startListener];*/
-    
-    
     //NSUserDefaults *defaults =  [NSUserDefaults standardUserDefaults];
     //[defaults setObject:@"134" forKey:@"projectCode"];
     //[defaults synchronize];
-    
-    //[self.contentWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://10.10.2.132/filmsync/api/preview/46"]]];
     
 }
 
@@ -205,8 +205,12 @@ static CardsViewControllerPOC *sharedInstance = nil;
     [self.cardDescTextView setText:@""];
     [self.statusLabel setText:@""];
     //[self.contentWebView ];
+    
     [self.tweetButton setHidden:TRUE];
-    [self.contentWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
+    [self.contentWebView setHidden:YES];
+    [self.filmTitleLabel setHidden:YES];
+    
+    //[self.contentWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
     [self.syncStatusLabel setText:@""];
     
     [self.syncWaveImageView setHidden:NO];
@@ -237,12 +241,14 @@ static CardsViewControllerPOC *sharedInstance = nil;
 {
     NSLog(@"newMarkerReceived");
     [self clearCardView];
+    
 
     [self.syncStatusLabel setText:@"Waiting..."];
     //[self.contentWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
 
     
-    Card *currentCard = [self getExistingCardWithID:marker];
+    /*used
+     Card *currentCard = [self getExistingCardWithID:marker];
     if (currentCard != nil)
     {
         [self newCardReceivedFromLocal:currentCard];
@@ -250,33 +256,9 @@ static CardsViewControllerPOC *sharedInstance = nil;
     else
     {
          [self getCardFromServerForCardID:marker];
-    }
+    }*/
    
-    /*
-    NSDictionary *markerDict = [self getDataForMarker:marker];
-    //NSLog(@"markerDict :%@",markerDict);
-    
-    //local
-    //[self.cardImageView setImage:[UIImage imageNamed:[markerDict objectForKey:@"content"]]];
-    //[self.cardDescTextView setText:[markerDict objectForKey:@"title"]];
-    
-    //Server
-    [self.contentWebView setContentMode:UIViewContentModeRedraw];
-    //[self.contentWebView setScalesPageToFit:YES];
-    NSString* url = [markerDict objectForKey:@"content"];
-    //NSString* url = @"http://10.10.2.31/filmsync/projects/preview/000000000084";
-    NSURL* nsUrl = [NSURL URLWithString:url];
-    //NSURLRequest* request = [NSURLRequest requestWithURL:nsUrl cachePolicy:NSURLRequestReloadRevalidatingCacheData timeoutInterval:300];
-    //[self.contentWebView loadRequest:request];
-    
-    [self.filmTitleLabel setText:[markerDict objectForKey:@"title"]];
-    //NSString *urlAddress = @"http://dl.dropbox.com/u/50941418/2-build.html";
-    //NSURL *url = [NSURL URLWithString:urlAddress];
-    self.reloadWebView = YES;
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:nsUrl];
-    
-    [self.contentWebView loadRequest:requestObj];
-    //self.contentWebView.delegate = self;*/
+    [self getCardFromServerForCardID:marker];
 }
 - (void)webViewDidFinishLoad:(UIWebView *)theWebView
 {
@@ -320,6 +302,9 @@ static CardsViewControllerPOC *sharedInstance = nil;
         [self.syncStatusLabel setHidden:YES];
         
         [self.tweetButton setHidden:FALSE];
+        [self.contentWebView setHidden:NO];
+        [self.filmTitleLabel setHidden:NO];
+        
     }
     
     
@@ -380,6 +365,20 @@ static CardsViewControllerPOC *sharedInstance = nil;
 
 -(void)getCardFromServerForCardID:(NSString *)cardID
 {
+    [[FilmSyncWebService sharedInstance] serverAPI_getCard:cardID usingAsync:NO andCompletionHandler:^(NSDictionary *cardDict)
+    {
+        if (cardDict)
+        {
+            [self newCardReceivedFromServer:cardDict];
+        }
+        else
+        {
+            NSLog(@"Card Fetch Error from server");
+        }
+    }];
+    
+    
+    /* used
     NSLog(@"getCardFromServerForCardID");
     
     NSString *URLStr = [NSString stringWithFormat:@"http://filmsync.fingent.net/api/getacard/%@",cardID];
@@ -407,7 +406,7 @@ static CardsViewControllerPOC *sharedInstance = nil;
         {
             [self newCardReceivedFromServer:jsonDict];
         }
-    }
+    }*/
     
     /*
     NSURLSession *session = [NSURLSession sharedSession];
@@ -449,10 +448,15 @@ static CardsViewControllerPOC *sharedInstance = nil;
 -(void) newCardReceivedFromServer:(NSDictionary *)CardDict
 {
     NSLog(@"newCardReceivedFromServer");
-    Card *receivedCard = [self newCard:CardDict];
+    Card *receivedCard = [self getExistingCardWithID:[CardDict objectForKey:@"card_id"]];
+    if (receivedCard == nil)
+    {
+        receivedCard = [self newCard:CardDict];
+    }
+    /*
+    Card *receivedCard = [self newCard:CardDict];*/
     NSString *projectID = [CardDict objectForKey:@"project_id"];
     twitterTagsForCurrentProject = [CardDict objectForKey:@"twittersearch"];
-    
     Project *projectToBeSaved = [self getExistingProjectWithID:projectID];
     if (projectToBeSaved == nil)
     {
@@ -461,6 +465,7 @@ static CardsViewControllerPOC *sharedInstance = nil;
         projectToBeSaved.twitterSearch = twitterTagsForCurrentProject;
     }
     receivedCard.project = projectToBeSaved;
+    
     
     [self loadContentInWebView:receivedCard];
     
@@ -474,6 +479,7 @@ static CardsViewControllerPOC *sharedInstance = nil;
     //NSDictionary *cardDict = [NSDictionary dictionaryWithObjectsAndKeys:Crd.cardID,@"card_id",Crd.title,@"title",Crd.content,@"content",Crd.project.projectID,@"project_id",Crd.project.twitterSearch,@"twittersearch", nil];
     [self loadContentInWebView:Crd];
     
+    twitterTagsForCurrentProject = Crd.project.twitterSearch;
     NSString *projectID = Crd.project.projectID;
     [self getAllCardsForProjectFromServer:projectID];
 }
@@ -482,10 +488,43 @@ static CardsViewControllerPOC *sharedInstance = nil;
 {
     NSLog(@"getAllCardsForProjectFromServer : %@",projectID);
     
-    NSString *URLStr = [NSString stringWithFormat:@"http://filmsync.fingent.net/api/getcardsforproject/%@",projectID];
+    //NSString *URLStr = [NSString stringWithFormat:@"http://filmsync.fingent.net/api/getcardsforproject/%@",projectID];
+    NSString *URLStr = [NSString stringWithFormat:@"http://10.10.2.31/filmsync/api/getcardsforproject/%@/ouPa2Nt3SyqGh0oLxC",projectID];
     NSURL *URL = [NSURL URLWithString:URLStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     
+    
+    
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        //here task #1 that takes 10 seconds to run
+        NSLog(@"Task #1 finished");
+        
+        // Send a synchronous request
+        NSURLResponse * response = nil;
+        NSError * error = nil;
+        NSData * data = [NSURLConnection sendSynchronousRequest:request
+                                              returningResponse:&response
+                                                          error:&error];
+        
+        if (error == nil)
+        {
+            // Parse data here
+            NSError *parseError = nil;
+            NSDictionary *jsonDict = [NSJSONSerialization
+                                      JSONObjectWithData:data
+                                      options:NSJSONReadingMutableLeaves
+                                      error:&parseError];
+            NSLog(@"jsonDict :%@",jsonDict);
+            
+            if (parseError == nil)
+            {
+                [self newCardsForProjectReceivedFromServer:jsonDict];
+            }
+        }
+    });
+    
+    /*
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
                                             completionHandler:
@@ -514,7 +553,7 @@ static CardsViewControllerPOC *sharedInstance = nil;
                                       NSLog(@"error :%@",error);
                                   }];
     
-    [task resume];
+    [task resume];*/
 }
 -(void) newCardsForProjectReceivedFromServer:(NSDictionary *)Project_AllCardsDict
 {
@@ -545,7 +584,7 @@ static CardsViewControllerPOC *sharedInstance = nil;
 }*/
 -(void)loadContentInWebView:(Card *)CardItem
 {
-    NSLog(@"loadContentInWebView");
+    NSLog(@"loadContentInWebView : %@",CardItem.content);
     NSURL* nsUrl = [NSURL URLWithString:CardItem.content];
     [self.filmTitleLabel setText:CardItem.title];
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:nsUrl];
@@ -700,6 +739,11 @@ static CardsViewControllerPOC *sharedInstance = nil;
 {
     NSLog(@"saveCardsInDB");
     [[CoreData sharedManager] saveEntity];
+}
+
+-(void)addNumber:(int)number1 withNumber:(int)number2 andCompletionHandler:(void (^)(int result))completionHandler{
+    int result = number1 + number2;
+    completionHandler(result);
 }
 
 /*
