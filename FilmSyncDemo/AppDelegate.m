@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "CardsViewControllerPOC.h"
+#import "CardsViewController.h"
 
 @implementation AppDelegate
 
@@ -15,7 +15,7 @@
 {
     // Override point for customization after application launch.
     
-    //Disable screen autotimeout
+    //Disable screen auto timeout
     [application setIdleTimerDisabled:YES];
     //Set white color for status bar
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
@@ -37,6 +37,7 @@
     
 }
 
+//Customise TabBar
 -(void) addCenterButtonWithImage:(UIImage*)buttonImage highlightImage:(UIImage*)highlightImage controller:(UIViewController *)VC
 {
     self.tabBarVC = VC.tabBarController;
@@ -47,8 +48,9 @@
     self.centerButton.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
     [self.centerButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
     [self.centerButton setBackgroundImage:highlightImage forState:UIControlStateSelected];
-    
     [self.centerButton addTarget:self action:@selector(CenterButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //Set button possition
     CGFloat heightDifference = buttonImage.size.height - VC.tabBarController.tabBar.frame.size.height;
     if (heightDifference < 0)
         self.centerButton.center = VC.tabBarController.tabBar.center;
@@ -58,6 +60,7 @@
         center.y = center.y - heightDifference/2.0;
         self.centerButton.center = center;
     }
+    
     //Add raised center button to tab bar
     [VC.tabBarController.view addSubview:self.centerButton];
     //Set flag
@@ -87,84 +90,20 @@
     
 }
 
+//TabBar Sync button pressed
 -(void) CenterButtonPressed :(UIButton *)btn
 {
     //Setup and load card view
-    [[CardsViewControllerPOC sharedInstance] clearCardView];
+    [[CardsViewController sharedInstance] clearCardView];
     [self.tabBarVC setSelectedIndex:1];
 }
 
-/*
-- (void) rwDataToPlist:(NSString *)fileName playerColor:(NSString *)strPlayer withData:(NSArray *)data
-
-{
-    
-    // Step1: Get plist file path
-    
-    NSArray *sysPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory ,NSUserDomainMask, YES);
-    
-    NSString *documentsDirectory = [sysPaths objectAtIndex:0];
-    
-    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:fileName];
-    
-    NSLog(@"Plist File Path: %@", filePath);
-    
-    // Step2: Define mutable dictionary
-    
-    NSMutableDictionary *plistDict;
-    
-    // Step3: Check if file exists at path and read data from the file if exists
-    
-    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
-        
-    {
-        
-        plistDict = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
-        
-    }
-    
-    else
-        
-    {
-        
-        // Step4: If doesn't exist, start with an empty dictionary
-        
-        plistDict = [[NSMutableDictionary alloc] init];
-        
-    }
-    
-    NSLog(@"plist data: %@", [plistDict description]);
-    
-    // Step5: Set data in dictionary
-    
-    [plistDict setValue:data forKey: strPlayer];
-    
-    // Step6: Write data from the mutable dictionary to the plist file
-    
-    BOOL didWriteToFile = [plistDict writeToFile:filePath atomically:YES];
-    
-    if (didWriteToFile)
-        
-    {
-        
-        NSLog(@"Write to .plist file is a SUCCESS!");
-        
-    }
-    
-    else
-        
-    {
-        
-        NSLog(@"Write to .plist file is a FAILURE!");
-        
-    }
-    
-}
-*/
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    
+    //Enable screen auto timeout
     [application setIdleTimerDisabled:NO];
 }
 
@@ -172,24 +111,32 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    //Enable screen auto timeout
     [application setIdleTimerDisabled:NO];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    
+    //Disable screen auto timeout
     [application setIdleTimerDisabled:YES];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    //Disable screen auto timeout
     [application setIdleTimerDisabled:YES];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    
+    //Enable screen auto timeout
     [application setIdleTimerDisabled:NO];
 }
 

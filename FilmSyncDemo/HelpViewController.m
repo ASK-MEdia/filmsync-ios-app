@@ -9,6 +9,10 @@
 #import "HelpViewController.h"
 #import "HelpPageViewController.h"
 
+
+
+#define kTotalScreens   4
+
 @interface HelpViewController ()
 
 @end
@@ -19,8 +23,8 @@
     
     [super viewDidLoad];
     
+    //setup pageview controller
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
-    
     self.pageController.dataSource = self;
     CGRect viewFrame = [[self view] bounds];
     [[self.pageController view] setFrame:CGRectMake(0.0, 0.0,viewFrame.size.width,viewFrame.size.height - 10)];
@@ -43,7 +47,7 @@
 - (HelpPageViewController *)viewControllerAtIndex:(NSUInteger)index {
     NSLog(@"viewControllerAtIndex ");
     
-    // 3. Get the controller from the storyboard.
+    //Get the controller from the storyboard.
     HelpPageViewController *childViewController = (HelpPageViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"HelpPage"];
     childViewController.index = index;
     
@@ -54,18 +58,15 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     
-    NSLog(@"viewControllerBeforeViewController ");
     NSUInteger index = [(HelpPageViewController *)viewController index];
     
     if (index == 0) {
         return nil;
     }
-    
     // Decrease the index by 1 to return
     index--;
     
     return [self viewControllerAtIndex:index];
-    
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
@@ -75,10 +76,9 @@
     
     index++;
     
-    if (index == 4) {
+    if (index == kTotalScreens) {
         return nil;
     }
-    
     return [self viewControllerAtIndex:index];
     
 }
@@ -86,7 +86,7 @@
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
     NSLog(@"presentationCountForPageViewController ");
     // The number of items reflected in the page indicator.
-    return 4;
+    return kTotalScreens;
 }
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {

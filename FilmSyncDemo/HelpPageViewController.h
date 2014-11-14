@@ -11,7 +11,6 @@
 @interface HelpPageViewController : UIViewController
 
 @property (assign, nonatomic) NSInteger index;
-@property (strong, nonatomic) IBOutlet UILabel *screenNumber;
 @property (weak, nonatomic) IBOutlet UIImageView *helpImageView;
 
 @end

@@ -21,9 +21,9 @@
 #pragma mark APIs
 -(void)setConnectionURL:(NSString *)url;
 -(void)setAPISecret:(NSString *)ApiKey;
--(NSString *)serverAPI_authenticateUsingAsync:(BOOL)isAsync andCompletionHandler:(void (^)(NSString *status))completionHandler;
+-(void)serverAPI_authenticateUsingAsync:(BOOL)isAsync andCompletionHandler:(void (^)(NSString *status))completionHandler;
 -(void)serverAPI_getCard:(NSString *)cardID usingAsync:(BOOL)isAsync andCompletionHandler:(void (^)(NSDictionary* cardDict))completionHandler;
-
+-(void)serverAPI_getAllCardsForProject:(NSString *)projectID usingAsync:(BOOL)isAsync andCompletionHandler:(void (^)(NSDictionary* cardsDict))completionHandler;
 
 
 @end

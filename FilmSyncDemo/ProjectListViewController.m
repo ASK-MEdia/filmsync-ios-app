@@ -7,7 +7,7 @@
 //
 
 #import "ProjectListViewController.h"
-#import "CardsViewControllerPOC.h"
+#import "CardsViewController.h"
 #import "AppDelegate.h"
 #import "GCArraySectionController.h"
 #import "Project.h"
@@ -29,12 +29,16 @@
     // Do any additional setup after loading the view.
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    
+    //Add TabBar sync button
     [appDelegate addCenterButtonFromcontroller:self];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    //Configure Project List
     [self configureView];
     [self.tableView reloadData];
     
@@ -70,33 +74,33 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    //Expanding table view support
     GCRetractableSectionController* sectionController = [self.retractableControllers objectAtIndex:section];
     return sectionController.numberOfRow;
 }
-/*- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    return [UIView new];
-    // If you are not using ARC:
-    // return [[UIView new] autorelease];
-}*/
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //Expanding table view support
     GCRetractableSectionController* sectionController = [self.retractableControllers objectAtIndex:indexPath.section];
     return [sectionController cellForRow:indexPath.row];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    //retrive selected card id
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     NSString *SelectedCardID = [NSString stringWithFormat:@"%012d",cell.tag];
-    //NSLog(@"SelectedCardID : %@",SelectedCardID);
+    
     if (cell.tag > 0)
     {
+        //Load Sync tab
         [self.tabBarController setSelectedIndex:1];
-        [[CardsViewControllerPOC sharedInstance] newMarkerReceived:SelectedCardID];
+        [[CardsViewController sharedInstance] newMarkerReceived:SelectedCardID];
         
     }
+    
+    //Expanding table view support
     GCRetractableSectionController* sectionController = [self.retractableControllers objectAtIndex:indexPath.section];
     return [sectionController didSelectCellAtRow:indexPath.row];
 }
@@ -104,9 +108,10 @@
 
 - (NSMutableArray *)getAllProjectFromDatabase
 {
-    
     NSArray *result = nil;
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Project"];
+    
+    //Sort
     /*if ([entityName isEqualToString:@"Project"])
     {
         //Sort descending - new Logs will appear on the top row of the list

@@ -11,9 +11,9 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) UIButton *centerButton;
-@property (strong, nonatomic) UITabBarController *tabBarVC;
-@property BOOL isCenterButtonAdded;
+@property (strong, nonatomic) UIButton *centerButton; // Custom TabBar Sync Button
+@property (strong, nonatomic) UITabBarController *tabBarVC; //Custom TabBar
+@property BOOL isCenterButtonAdded; 
 
 -(void) addCenterButtonFromcontroller:(UIViewController *)VC;
 @end

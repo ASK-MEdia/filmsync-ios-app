@@ -9,7 +9,15 @@
 #import "FilmSyncWebService.h"
 
 
-#define kFilmSyncWebServiceBaseURL
+#define kFilmSyncPrefKeySessionID   @"filmSyncPrefKeySessionID"
+
+// Log include the function name and source code line number in the log statement
+#ifdef FSW_DEBUG
+    #define FSWDebugLog(fmt, ...) NSLog((@"Func: %s, Line: %d, " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+    #define FSWDebugLog(...)
+#endif
+
 @implementation FilmSyncWebService
 {
     NSString *apiSecret;
@@ -54,13 +62,23 @@ static FilmSyncWebService *sharedInstance = nil;
 -(void)setAPISecret:(NSString *)ApiKey
 {
     apiSecret = ApiKey;
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    sessionID = [prefs stringForKey:kFilmSyncPrefKeySessionID];
+    
+    
 }
 -(void)setConnectionURL:(NSString *)url
 {
-    //TODO : remove "/" from URL
+    //Remove white space and "/" from end of URL
+    url = [url stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    if([url hasSuffix:@"/"])
+    {
+        url = [url substringToIndex:[url length] - 1];
+    }
     baseURL = url;
 }
--(NSString *)serverAPI_authenticateUsingAsync:(BOOL)isAsync andCompletionHandler:(void (^)(NSString *status))completionHandler
+-(void)serverAPI_authenticateUsingAsync:(BOOL)isAsync andCompletionHandler:(void (^)(NSString *status))completionHandler
 {
     
     NSDictionary *authDict = [self getSessionIDFromServer:apiSecret];
@@ -70,6 +88,11 @@ static FilmSyncWebService *sharedInstance = nil;
      if ([authStatus isEqualToString:@"active"])
      {
          sessionID = [authDict objectForKey:@"sessionid"];
+         
+         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+         [prefs setObject:sessionID forKey:kFilmSyncPrefKeySessionID];
+         [prefs synchronize];
+         
          NSLog(@"Successful authentication");
      }
      else
@@ -79,8 +102,6 @@ static FilmSyncWebService *sharedInstance = nil;
      }
     
     completionHandler(authStatus);
-    
-    return authStatus;
 }
 
 -(void)serverAPI_getCard:(NSString *)cardID usingAsync:(BOOL)isAsync andCompletionHandler:(void (^)(NSDictionary* cardDict))completionHandler
@@ -89,20 +110,53 @@ static FilmSyncWebService *sharedInstance = nil;
     NSString *sessionStatus = [cardDict objectForKey:@"session"];
     if ([sessionStatus isEqualToString:@"active"])
     {
-        //sessionID = [jsonDict objectForKey:@"sessionid"];
         NSLog(@"valid session");
         completionHandler(cardDict);
     }
     else
     {
-        //NSString *stat =  [self serverAPI_authenticateUsingAsync:NO andCompletionHandler:^(NSString *status){}];
-        //sessionID = nil;
-        
         NSLog(@"Re-authenticating session..");
-        NSString *stat =  [self serverAPI_authenticateUsingAsync:NO andCompletionHandler:^(NSString *status){}];
+        __block NSString *stat =@"";
+        
+        [self serverAPI_authenticateUsingAsync:NO andCompletionHandler:^(NSString *status)
+        {
+            stat = status;
+        }];
         if ([stat isEqualToString:@"active"])
         {
             cardDict = [self getCardFromServer:cardID];
+            
+        }
+        else
+        {
+            NSLog(@"Invalid sessionID and API Secret");
+            cardDict = nil;
+        }
+        completionHandler(cardDict);
+    }
+}
+-(void)serverAPI_getAllCardsForProject:(NSString *)projectID usingAsync:(BOOL)isAsync andCompletionHandler:(void (^)(NSDictionary* cardsDict))completionHandler
+{
+    __block NSDictionary *cardDict = [self getAllCardsForProject:projectID];
+    NSString *sessionStatus = [cardDict objectForKey:@"session"];
+    if ([sessionStatus isEqualToString:@"active"])
+    {
+        NSLog(@"valid session");
+        completionHandler(cardDict);
+    }
+    else
+    {
+        NSLog(@"Re-authenticating session..");
+        __block NSString *stat =@"";
+        
+        [self serverAPI_authenticateUsingAsync:NO andCompletionHandler:^(NSString *status)
+        {
+            stat = status;
+        }];
+        
+        if ([stat isEqualToString:@"active"])
+        {
+            cardDict = [self getAllCardsForProject:projectID];
             
         }
         else
@@ -134,23 +188,9 @@ static FilmSyncWebService *sharedInstance = nil;
                                   JSONObjectWithData:data
                                   options:NSJSONReadingMutableLeaves
                                   error:&parseError];
-        //NSLog(@"jsonDict :%@",jsonDict);
-        
         if (parseError)
         {
-            /*authStatus = [jsonDict objectForKey:@"status"];
-            if ([authStatus isEqualToString:@"active"])
-            {
-                sessionID = [jsonDict objectForKey:@"sessionid"];
-            }
-            else
-            {
-                sessionID = nil;
-                NSLog(@"Invalid API Secret");
-            }*/
-            
             NSLog(@"Server Authentication :%@",parseError);
-            
         }
     }
 
@@ -177,45 +217,23 @@ static FilmSyncWebService *sharedInstance = nil;
                                           JSONObjectWithData:data
                                           options:NSJSONReadingMutableLeaves
                                           error:&parseError];
-        //NSLog(@"jsonDict :%@",jsonDict);
-        
         if (parseError == nil)
         {
-            //[self newCardReceivedFromServer:jsonDict];
-           /* NSString *authStatus = [jsonDict objectForKey:@"session"];
-            if ([authStatus isEqualToString:@"active"])
-            {
-                //sessionID = [jsonDict objectForKey:@"sessionid"];
-                
-            }
-            else
-            {
-                NSString *stat =  [self serverAPI_authenticateUsingAsync:NO andCompletionHandler:^(NSString *status)
-                                   {
-                                       
-                                   }];
-                //sessionID = nil;
-            }*/
-            
+            NSLog(@"Server getCardFromServer :%@",parseError);
         }
     }
     return jsonDict;
 }
 
-/*
--(NSString *)serverAPI_authenticateUsingAsync:(BOOL)isAsync andCompletionHandler:(void (^)(NSString *status))completionHandler
+-(NSDictionary *)getAllCardsForProject:(NSString *)projectID
 {
-    NSString *authStatus = @"";
-    
-    //http://10.10.2.31/filmsync/api/handshake/1253698547
-    //http://10.10.2.31/filmsync/api/getcardsforproject/1/Y8LtyhYFQMpjHPSFi9
-    
-    NSString *URLStr = [NSString stringWithFormat:@"%@/api/handshake/%@",baseURL,apiSecret];
+    NSString *URLStr = [NSString stringWithFormat:@"%@/api/getcardsforproject/%@/%@",baseURL,projectID,sessionID];
     NSURL *URL = [NSURL URLWithString:URLStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-    // Send a synchronous request
+    
     NSURLResponse * response = nil;
     NSError * error = nil;
+    NSDictionary *jsonDict = nil;
     NSData * data = [NSURLConnection sendSynchronousRequest:request
                                           returningResponse:&response
                                                       error:&error];
@@ -223,117 +241,18 @@ static FilmSyncWebService *sharedInstance = nil;
     {
         // Parse data here
         NSError *parseError = nil;
-        NSDictionary *jsonDict = [NSJSONSerialization
-                                  JSONObjectWithData:data
-                                  options:NSJSONReadingMutableLeaves
-                                  error:&parseError];
-        //NSLog(@"jsonDict :%@",jsonDict);
+        jsonDict = [NSJSONSerialization
+                    JSONObjectWithData:data
+                    options:NSJSONReadingMutableLeaves
+                    error:&parseError];
         
         if (parseError == nil)
         {
-            authStatus = [jsonDict objectForKey:@"status"];
-            if ([authStatus isEqualToString:@"active"])
-            {
-                sessionID = [jsonDict objectForKey:@"sessionid"];
-            }
-            else
-            {
-                sessionID = nil;
-                NSLog(@"Invalid API Secret");
-            }
-            
+            NSLog(@"Server getAllCardsForProject :%@",parseError);
         }
     }
-    
-    
-    completionHandler(authStatus);
-    return authStatus;
+    return jsonDict;
 }
-
-*/
-/*
--(void)serverAPI_getCard:(NSString *)cardID usingAsync:(BOOL)isAsync andCompletionHandler:(void (^)(NSDictionary* cardDict))completionHandler
-{
-    
-    NSString *URLStr = [NSString stringWithFormat:@"%@/api/getacard/%@/%@",baseURL,cardID,sessionID];
-    NSURL *URL = [NSURL URLWithString:URLStr];
-    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-    
-    if (isAsync)
-    {
-        //Send Async
-        NSURLSession *session = [NSURLSession sharedSession];
-        NSURLSessionDataTask *task = [session dataTaskWithRequest:request
-                                                completionHandler:
-                                      ^(NSData *data, NSURLResponse *response, NSError *error) {
-                                          if (error == nil)
-                                          {
-                                              NSError *parseError = nil;
-                                              NSDictionary *jsonDict = [NSJSONSerialization
-                                                                        JSONObjectWithData:data
-                                                                        options:NSJSONReadingMutableLeaves
-                                                                        error:&parseError];
-                                              //NSLog(@"jsonDict :%@",jsonDict);
-                                              
-                                              if (parseError == nil)
-                                              {
-                                                  //[self newCardReceivedFromServer:jsonDict];
-                                                  completionHandler(jsonDict);
-                                              }
-                                          }
-                                          else
-                                          {
-                                              NSLog(@"getAllCardsForProjectFromServer - No Data Or Error Received");
-                                          }
-                                          
-                                          
-                                          NSLog(@"error :%@",error);
-                                      }];
-        
-        [task resume];
-    }
-    else
-    {
-        // Send a synchronous request
-        NSURLResponse * response = nil;
-        NSError * error = nil;
-        NSData * data = [NSURLConnection sendSynchronousRequest:request
-                                              returningResponse:&response
-                                                          error:&error];
-        if (error == nil)
-        {
-            // Parse data here
-            NSError *parseError = nil;
-            __block NSDictionary *jsonDict = [NSJSONSerialization
-                                      JSONObjectWithData:data
-                                      options:NSJSONReadingMutableLeaves
-                                      error:&parseError];
-            //NSLog(@"jsonDict :%@",jsonDict);
-            
-            if (parseError == nil)
-            {
-                //[self newCardReceivedFromServer:jsonDict];
-                NSString *authStatus = [jsonDict objectForKey:@"session"];
-                if ([authStatus isEqualToString:@"active"])
-                {
-                    //sessionID = [jsonDict objectForKey:@"sessionid"];
-                    completionHandler(jsonDict);
-                }
-                else
-                {
-                    NSString *stat =  [self serverAPI_authenticateUsingAsync:NO andCompletionHandler:^(NSString *status)
-                                       {
-                                           
-                                       }];
-                    //sessionID = nil;
-                }
-                
-                
-            }
-        }
-    }
-}
-*/
 
 -(NSString *)checkSessionID
 {
@@ -343,7 +262,11 @@ static FilmSyncWebService *sharedInstance = nil;
     }
     else
     {
-       NSString *stat =  [self serverAPI_authenticateUsingAsync:NO andCompletionHandler:^(NSString *status){}];
+       __block NSString *stat = @"";
+        [self serverAPI_authenticateUsingAsync:NO andCompletionHandler:^(NSString *status)
+        {
+            stat = status;
+       }];
         if ([stat isEqualToString:@"invalid"])
         {
             NSLog(@"Auth invalid");
@@ -355,10 +278,6 @@ static FilmSyncWebService *sharedInstance = nil;
     }
     return sessionID;
 }
-
-
-#pragma mark -
-
 
 
 @end
