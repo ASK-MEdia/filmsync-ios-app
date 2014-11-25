@@ -32,7 +32,6 @@
     if (!self.isCenterButtonAdded)
     {
         [self addCenterButtonWithImage:[UIImage imageNamed:@"tabIcon_Sync.png"] highlightImage:[UIImage imageNamed:@"tabIcon_Sync_Selected.png"] controller:VC];
-        
     }
     
 }

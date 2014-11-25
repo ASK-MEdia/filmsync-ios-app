@@ -28,16 +28,17 @@
 
 
 @property (nonatomic, assign) id<FilmSyncDelegate> delegate;
-@property (nonatomic, retain) NSString *sourceID; //Unique identifier that relates directly to specific content source. Required. (licensing number)
-@property (nonatomic, retain) NSURL *contentSourceURL; //Parent URL to source of content SON file (ex. http://docsinhand.com/api/12345.json)
-@property (nonatomic, assign) long int timeOut; //The specified time the app will continue to listen for source tones. Default, 120 seconds.
+//@property (nonatomic, retain) NSString *sourceID; //Unique identifier that relates directly to specific content source. Required. (licensing number)
+//@property (nonatomic, retain) NSURL *contentSourceURL; //Parent URL to source of content JSON file (ex. http://docsinhand.com/api/12345.json)
+@property (nonatomic, assign) float timeOut; //The specified time the app will continue to listen for source tones. Default, 120 seconds.
 
 + (FilmSync*) sharedFilmSyncManager;
 - (void) frequencyChangedWithValue:(float)newFrequency;
 - (void) startListener;
 - (void) stopListener;
+- (BOOL) isListenerRunning;
 
-//SDK Methods
+/*//SDK Methods
 //Returns the number of cards to be delivered during the entire duration of the source content (via JSON count of objects). Number
 -(int) getTotalCards;
 //Returns the numerical id of current marker number detected from video source. A 32bit number . Returns null if no source detected.
@@ -47,6 +48,18 @@
 //Returns array of hzs of the last detected signal. Length max of 2.) ex. [18200, 19400]
 -(NSArray *)getTonesDetected;
 //Returns the ID of the signal detected
--(NSString *)getSignalDetected;
+-(NSString *)getSignalDetected;*/
+
+
+
+
+#pragma mark -
+#pragma mark APIs
+-(void)setConnectionURL:(NSString *)url;
+-(void)setAPISecret:(NSString *)ApiKey;
+-(void)serverAPI_authenticate_CompletionHandler:(void (^)(NSString *status))completionHandler;
+-(void)serverAPI_getCard:(NSString *)cardID andCompletionHandler:(void (^)(NSDictionary* cardDict))completionHandler;
+-(void)serverAPI_getAllCardsForProject:(NSString *)projectID andCompletionHandler:(void (^)(NSDictionary* cardsDict))completionHandler;
+
 
 @end

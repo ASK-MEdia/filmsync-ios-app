@@ -27,31 +27,41 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    
-    //Add TabBar sync button
-    [appDelegate addCenterButtonFromcontroller:self];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    //Configure Project List
-    [self configureView];
-    [self.tableView reloadData];
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    if (![appDelegate isCenterButtonAdded])
+    {//First time load
+        //Add TabBar sync button
+        [appDelegate addCenterButtonFromcontroller:self];
+        
+        //Launch to Sync screen
+        [self.tabBarController setSelectedIndex:1];
+    }
+    else
+    {
+        //Configure Project List
+        [self configureView];
+        [self.tableView reloadData];
+    }
     
-    //NSLog(@"tableView contraints :%@",[self.tableView constraints]);
 }
 
+// Configure Project list screen
 -(void) configureView
 {
+    // Load project objects
     if (_projectListArray != nil)
     {
         _projectListArray = nil;
     }
     _projectListArray = [self getAllProjectFromDatabase];
+    
+    //Set Projects to custom expanding table cells
     NSMutableArray *projectControllersArray = [[NSMutableArray alloc] init];
     for (Project *prj in _projectListArray)
     {
@@ -86,6 +96,7 @@
     return [sectionController cellForRow:indexPath.row];
 }
 
+//select row
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //retrive selected card id
@@ -95,8 +106,10 @@
     if (cell.tag > 0)
     {
         //Load Sync tab
+        [[CardsViewController sharedInstance] setCurrentCardID:SelectedCardID];
         [self.tabBarController setSelectedIndex:1];
-        [[CardsViewController sharedInstance] newMarkerReceived:SelectedCardID];
+        //[[CardsViewController sharedInstance] newMarkerReceived:SelectedCardID];
+        
         
     }
     
@@ -105,7 +118,7 @@
     return [sectionController didSelectCellAtRow:indexPath.row];
 }
 
-
+// load project from coredata
 - (NSMutableArray *)getAllProjectFromDatabase
 {
     NSArray *result = nil;
@@ -135,14 +148,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -45,8 +45,6 @@
 }
 
 - (HelpPageViewController *)viewControllerAtIndex:(NSUInteger)index {
-    NSLog(@"viewControllerAtIndex ");
-    
     //Get the controller from the storyboard.
     HelpPageViewController *childViewController = (HelpPageViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"HelpPage"];
     childViewController.index = index;
@@ -56,6 +54,7 @@
     
 }
 
+//Swipe to right
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     
     NSUInteger index = [(HelpPageViewController *)viewController index];
@@ -69,9 +68,8 @@
     return [self viewControllerAtIndex:index];
 }
 
+//Swipe to left
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
-    
-    NSLog(@"viewControllerAfterViewController ");
     NSUInteger index = [(HelpPageViewController *)viewController index];
     
     index++;
@@ -84,13 +82,11 @@
 }
 
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
-    NSLog(@"presentationCountForPageViewController ");
     // The number of items reflected in the page indicator.
     return kTotalScreens;
 }
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
-    NSLog(@"presentationIndexForPageViewController ");
     // The selected item reflected in the page indicator.
     return 0;
 }

@@ -13,7 +13,6 @@
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
 
-#import "FilmSyncWebService.h"
 
 @interface CardsViewController ()
 {
@@ -24,7 +23,7 @@
 
 @implementation CardsViewController
 
-@synthesize markerDataArray = _markerDataArray;
+@synthesize currentCardID = _currentCardID;
 
 // *************** Singleton *********************
 
@@ -70,18 +69,17 @@ static CardsViewController *sharedInstance = nil;
     
     sharedInstance = self;
     
-    _currentCard = nil;
+    self.currentCardID = @"";
     twitterTagsForCurrentProject = @"";
     
-   
-
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     [appDelegate addCenterButtonFromcontroller:self];
     
     //Set Sync Animation
     [self setupSyncWaveAnimation];
-    //Set signal revi
+    //Set signal receiver
     [self setupSignalListener];
+    //set webservice API
     [self setupWebservice];
     
     [self.contentWebView setDelegate:self];
@@ -100,13 +98,23 @@ static CardsViewController *sharedInstance = nil;
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
     [self.syncWaveImageView startAnimating];
+    
+    // get card , if a cardID is passed from project list
+    if (![self.currentCardID isEqualToString:@""])
+    {
+        [self newMarkerReceived:self.currentCardID];
+    }
 }
 
 -(void) viewDidDisappear:(BOOL)animated
 {
+    [super viewDidDisappear:animated];
+    
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     [appDelegate.centerButton setSelected:NO];
+    self.currentCardID = @"";
   
 }
 
@@ -116,21 +124,9 @@ static CardsViewController *sharedInstance = nil;
     // Dispose of any resources that can be recreated.
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
-
-
 #pragma mark - Configurations
 
-
+// configure Sync Animation
 -(void) setupSyncWaveAnimation
 {
     NSMutableArray *SyncAnimationImages = [[NSMutableArray alloc] init];
@@ -143,64 +139,62 @@ static CardsViewController *sharedInstance = nil;
     [self.syncWaveImageView setAnimationImages:SyncAnimationImages];
     
     [self.syncWaveImageView setAnimationDuration:1];
+    [self.syncWaveImageView startAnimating];
 }
 
+// configure marker listener
 -(void) setupSignalListener
 {
-    NSLog(@"startListener");
+    FSDebugLog(@"startListener");
     FilmSync *filmSync = [FilmSync sharedFilmSyncManager];
     [filmSync setDelegate:self];
     [filmSync startListener];
 }
 
+// configure Webservice
 -(void) setupWebservice
 {
-    FilmSyncWebService *filmSyncAPI = [FilmSyncWebService sharedInstance];
-    [filmSyncAPI setConnectionURL:kFilmSyncAPIBaseUrl];
-    [filmSyncAPI setAPISecret:kFilmSyncAPISecret];
+    FilmSync *filmSync = [FilmSync sharedFilmSyncManager];
+    [filmSync setConnectionURL:kFilmSyncAPIBaseUrl];
+    [filmSync setAPISecret:kFilmSyncAPISecret];
 }
 
 
 #pragma mark - View initialisation
+// Clear view
 -(void)clearCardView
 {
+    [self.contentWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
     [self.filmTitleLabel setText:@""];
-    [self.cardDescTextView setText:@""];
-    [self.statusLabel setText:@""];
+    [self.syncStatusLabel setText:@""];
     
     [self.tweetButton setHidden:TRUE];
     [self.contentWebView setHidden:YES];
     [self.filmTitleLabel setHidden:YES];
     
-    [self.syncStatusLabel setText:@""];
-    
     [self.syncWaveImageView setHidden:NO];
-    [self.syncStatusLabel setHidden:NO];
     [self.syncWaveImageView startAnimating];
 }
 
 #pragma mark - Content load methods
 
-- (IBAction)getCardButtonPressed:(id)sender
-{
-    NSLog(@"get Card :%@",self.cardIDTextView.text);
-    [self newMarkerReceived:self.cardIDTextView.text];
-}
-
 //New marker received
 -(void)newMarkerReceived:(NSString *)marker
 {
-    NSLog(@"newMarkerReceived");
+    FSDebugLog(@"newMarkerReceived");
     [self clearCardView];
     
-    [self.syncStatusLabel setText:@"Loading..."];
-    
-    [self getCardFromServerForCardID:marker];
+    if (marker != nil && ![marker isEqualToString:@""])
+    {
+        [self.syncStatusLabel setText:@"Loading..."];
+        [self getCardFromServerForCardID:marker];
+    }
 }
 
+// load content in webview
 -(void)loadContentInWebView:(Card *)CardItem
 {
-    NSLog(@"loadContentInWebView : %@",CardItem.content);
+    FSDebugLog(@"loadContentInWebView : %@",CardItem.content);
     NSURL* nsUrl = [NSURL URLWithString:CardItem.content];
     [self.filmTitleLabel setText:CardItem.title];
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:nsUrl];
@@ -208,16 +202,15 @@ static CardsViewController *sharedInstance = nil;
     [self.contentWebView loadRequest:requestObj];
 }
 
+// Delegate method for Webview
 - (void)webViewDidFinishLoad:(UIWebView *)theWebView
 {
-
-    NSLog(@"webViewDidFinishLoad with URL  :%@",[[[theWebView request] URL] absoluteString]);
+    FSDebugLog(@"webViewDidFinishLoad with URL  :%@",[[[theWebView request] URL] absoluteString]);
     if (![[theWebView.request.URL absoluteString] isEqualToString:@"about:blank"])
     {
-        NSLog(@"stopAnimating");
         [self.syncWaveImageView stopAnimating];
         [self.syncWaveImageView setHidden:YES];
-        [self.syncStatusLabel setHidden:YES];
+        [self.syncStatusLabel setText:@""];
         
         [self.tweetButton setHidden:FALSE];
         [self.contentWebView setHidden:NO];
@@ -227,7 +220,7 @@ static CardsViewController *sharedInstance = nil;
 }
 
 #pragma mark - Twitter
-
+// Tweet button pressed
 - (IBAction)tweetButtonPressed:(id)sender {
     
     SLComposeViewController *tweetSheet = [SLComposeViewController
@@ -241,81 +234,51 @@ static CardsViewController *sharedInstance = nil;
 }
 
 #pragma mark - FilmSync API methods
-
+// Call API for get card from the server
 -(void)getCardFromServerForCardID:(NSString *)cardID
 {
-    [[FilmSyncWebService sharedInstance] serverAPI_getCard:cardID usingAsync:NO andCompletionHandler:^(NSDictionary *cardDict)
+    [[FilmSync sharedFilmSyncManager] serverAPI_getCard:cardID andCompletionHandler:^(NSDictionary *cardDict)
     {
+        
         if (cardDict)
         {
             if ([[cardDict objectForKey:@"empty"] isEqualToString:@"no"])
-            {
+            {// Card with Data
                 [self newCardReceivedFromServer:cardDict];
             }
             else if ([[cardDict objectForKey:@"empty"] isEqualToString:@"yes"])
-            {
+            {// Empty card Data
                 UIAlertView *noContentAlert = [[UIAlertView alloc] initWithTitle:@"Content not available" message:@"This content is not available" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 [noContentAlert show];
                 
                 [self deleteCardWithID:cardID];
+                [self.syncStatusLabel setText:@""];
             }
             else
-            {
-                NSLog(@"Card Data Erorr");
+            {// Error result
+                FSDebugLog(@"Card Data Erorr");
+                [self.syncStatusLabel setText:@""];
             }
         }
         else
-        {
-            NSLog(@"Card Fetch Error from server");
+        {//Invalid API Secret
+            FSDebugLog(@"Card Fetch Error from server");
             UIAlertView *noContentAlert = [[UIAlertView alloc] initWithTitle:@"Card Fetch Error" message:@"Invalid sessionID/APISecret" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [noContentAlert show];
+            [self.syncStatusLabel setText:@""];
             
         }
-        [self.syncStatusLabel setText:@""];
     }];
-    /*
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
-                                            completionHandler:
-                                  ^(NSData *data, NSURLResponse *response, NSError *error) {
-
-                                      
-                                      //NSString *titleStr = [[jsonDict objectForKey:@"project"] objectForKey:@"title"];
-                                      //[self.filmTitleLabel setText:titleStr];
-                                      //_markerDataArray = [jsonDict objectForKey:@"cards"];
-                                      //NSLog(@"markerDataArray :%@",self.markerDataArray);
-                                      
-                                      if (error == nil)
-                                      {
-                                          NSError *parseError = nil;
-                                          NSDictionary *jsonDict = [NSJSONSerialization
-                                                                    JSONObjectWithData:data
-                                                                    options:NSJSONReadingMutableLeaves
-                                                                    error:&parseError];
-                                          NSLog(@"jsonDict :%@",jsonDict);
-                                          
-                                          if (parseError == nil)
-                                          {
-                                              [self newCardReceivedFromServer:jsonDict];
-                                          }
-                                      }
-                                      else
-                                      {
-                                          NSLog(@"getAllCardsForProjectFromServer - No Data Or Error Received");
-                                      }
-                                      
-                                      
-                                      NSLog(@"error :%@",error);
-                                  }];
     
-    [task resume];*/
 }
+// Callback of get card recived from server
 -(void) newCardReceivedFromServer:(NSDictionary *)CardDict
 {
-    NSLog(@"newCardReceivedFromServer");
+    FSDebugLog(@"newCardReceivedFromServer");
     Card *receivedCard = [self getExistingCardWithID:[CardDict objectForKey:@"card_id"]];
     if (receivedCard == nil)
     {
+        // Add new card
         receivedCard = [self newCard:CardDict];
     }
 
@@ -330,29 +293,34 @@ static CardsViewController *sharedInstance = nil;
     }
     receivedCard.project = projectToBeSaved;
     
-    
+    //load card content
     [self loadContentInWebView:receivedCard];
-    
+    //update to database
     [self saveCardsInDB];
+    // Get/Update cards from the project of current showing card.
     [self getAllCardsForProjectFromServer:projectID];
 }
 
+// load card from local database
 -(void) newCardReceivedFromLocal:(Card *)Crd
 {
-    NSLog(@"newCardReceivedFromLocal : %@",Crd.project.projectID);
+    FSDebugLog(@"newCardReceivedFromLocal : %@",Crd.project.projectID);
+    //load card content
     [self loadContentInWebView:Crd];
     
     twitterTagsForCurrentProject = Crd.project.twitterSearch;
     NSString *projectID = Crd.project.projectID;
+    // Get/Update cards from the project of current showing card.
     [self getAllCardsForProjectFromServer:projectID];
 }
 
+// Call Api for get All cards for project
 -(void)getAllCardsForProjectFromServer:(NSString *)projectID
 {
-    NSLog(@"getAllCardsForProjectFromServer : %@",projectID);
+    FSDebugLog(@"getAllCardsForProjectFromServer : %@",projectID);
     
     
-    [[FilmSyncWebService sharedInstance] serverAPI_getAllCardsForProject:projectID usingAsync:NO andCompletionHandler:^(NSDictionary *cardsDict)
+    [[FilmSync sharedFilmSyncManager] serverAPI_getAllCardsForProject:projectID andCompletionHandler:^(NSDictionary *cardsDict)
      {
          if (cardsDict)
          {
@@ -367,24 +335,26 @@ static CardsViewController *sharedInstance = nil;
              }
              else
              {
-                 NSLog(@"Cards Data Erorr");
+                 FSDebugLog(@"Cards Data Erorr");
              }
              
          }
          else
          {
-             NSLog(@"Card Fetch Error from server");
+             FSDebugLog(@"Card Fetch Error from server");
          }
      }];
 }
 
-
+// Callback of get All cards for project from server
 -(void) newCardsForProjectReceivedFromServer:(NSDictionary *)Project_AllCardsDict
 {
-    NSLog(@"newCardsForProjectReceivedFromServer");
+    FSDebugLog(@"newCardsForProjectReceivedFromServer");
     NSDictionary *ProjectDict = [Project_AllCardsDict objectForKey:@"project"];
+    //create new project
     Project *newProject = [self newProject:ProjectDict];
     
+    //Add cards to the project
     NSArray *AllCardsDict = [Project_AllCardsDict objectForKey:@"cards"];
     for (int i=0; i < [AllCardsDict count]; i++)
     {
@@ -392,15 +362,15 @@ static CardsViewController *sharedInstance = nil;
         Card *newCard = [self newCard:cardDict];
         newCard.project = newProject;
     }
-    
+    //update to database
     [self saveCardsInDB];
 }
 
 #pragma mark - CoreData Database methods
-
+// create new Project in coreData Database
 -(Project *)newProject:(NSDictionary *)ProjectDict
 {
-    NSLog(@"newProject");
+    FSDebugLog(@"newProject");
     NSString *prj_id = [ProjectDict objectForKey:@"project_id"];
     Project *projectToBeSaved = [self getExistingProjectWithID:prj_id];
     if (projectToBeSaved == nil) {
@@ -413,10 +383,10 @@ static CardsViewController *sharedInstance = nil;
     
     return projectToBeSaved;
 }
-
+//create new Card in coreData Database
 -(Card *)newCard:(NSDictionary *)cardDict
 {
-    NSLog(@"newCard");
+    FSDebugLog(@"newCard");
     NSString *crd_id = [cardDict objectForKey:@"card_id"];
     Card *cardToBeSaved = [self getExistingCardWithID:crd_id];
     if (cardToBeSaved == nil) {
@@ -429,10 +399,10 @@ static CardsViewController *sharedInstance = nil;
     return cardToBeSaved;
 }
 
-
+// check for existing Project in database
 - (Project *)getExistingProjectWithID:(NSString *)projectID
 {
-    NSLog(@"getExistingProjectWithID");
+    FSDebugLog(@"getExistingProjectWithID");
     Project *prj = nil;
     NSArray *result = nil;
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Project"];
@@ -446,9 +416,10 @@ static CardsViewController *sharedInstance = nil;
     return prj;
 }
 
+// check for existing Card in database
 - (Card *)getExistingCardWithID:(NSString *)cardID
 {
-    NSLog(@"getExistingCardWithID");
+    FSDebugLog(@"getExistingCardWithID");
     Card *crd = nil;
     NSArray *result = nil;
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Card"];
@@ -463,6 +434,7 @@ static CardsViewController *sharedInstance = nil;
     return crd;
 }
 
+// delete Card from database
 -(BOOL) deleteCardWithID:(NSString *)cardID
 {
     Card *cardToDelete = [self getExistingCardWithID:cardID];
@@ -477,6 +449,7 @@ static CardsViewController *sharedInstance = nil;
     return FALSE;
 }
 
+// delete Project from database
 -(BOOL) deleteProjectWithID:(NSString *)projectID
 {
     Project *projectToDelete = [self getExistingProjectWithID:projectID];
@@ -498,38 +471,34 @@ static CardsViewController *sharedInstance = nil;
     [[CoreData sharedManager] saveEntity];
 }
 
-#pragma mark - FilmSync Delegate methods
-
-//Dispatched when app is ready to find source audio
+#pragma mark - FilmSync Delegate methodsA
+//App is ready to find source audio
 -(void) listeningForSource
 {
-    NSLog(@"listeningForSource ");
-    [self.statusLabel setText:@"Listening For Source"];
-    
+    FSDebugLog(@"listeningForSource ");
 }
 
-//Dispatched once when a signal from an external source is detected for a specific sourceID. Will not be dispatched again till source is lost.
+//A signal from an external source is detected for a specific sourceID. Will not be dispatched again till source is lost.
 -(void) sourceDetected
 {
-    NSLog(@"sourceDetected ");
-    [self.statusLabel setText:@"Source Detected"];
+    FSDebugLog(@"sourceDetected ");
+    [self clearCardView];
     [self.syncStatusLabel setText:@"Listening..."];
 }
 
-//Dispatched once when no signal detected in timeOut duration.
+//No signal detected in timeOut duration.
 -(void) sourceLost
 {
-    NSLog(@"sourceLost ");
-    [self.statusLabel setText:@"Source Lost"];
+    FSDebugLog(@"sourceLost ");
     [self.syncStatusLabel setText:@""];
 }
 
-//Dispatched when a proper signal is detected. Sends currentCard id.
+//A proper signal is detected. Sends currentCard id.
 -(void) markerDetected:(NSString *)currentCardID
 {
+    self.currentCardID = currentCardID;
     [self newMarkerReceived:currentCardID];
-    NSLog(@"markerDetected - currentCardID :%@",currentCardID);
-    [self.statusLabel setText:[NSString stringWithFormat:@"Marker Detected :%@",currentCardID]];
+    FSDebugLog(@"markerDetected - currentCardID :%@",currentCardID);
 }
 
 

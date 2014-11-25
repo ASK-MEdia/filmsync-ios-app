@@ -10,11 +10,10 @@
 
 @interface ProjectListViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 {
-    NSMutableArray *_projectListArray;
+    NSMutableArray *_projectListArray;  // store Project objects
 }
 
-@property (nonatomic,strong)  NSMutableArray *projectListArray;
-
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic,strong)  NSMutableArray *projectListArray; // store Project objects
+@property (weak, nonatomic) IBOutlet UITableView *tableView; // Project listing table
 
 @end

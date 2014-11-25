@@ -27,7 +27,6 @@
 		093F1CE319F923970015779B /* BackgroundImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 093F1CE019F923970015779B /* BackgroundImage.jpg */; };
 		093F1CE419F923970015779B /* BackgroundImage@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 093F1CE119F923970015779B /* BackgroundImage@2x.jpg */; };
 		093F1CE519F923970015779B /* BackgroundImage@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 093F1CE219F923970015779B /* BackgroundImage@3x.jpg */; };
-		094961441A0A2B1F00FFCA49 /* FilmSyncWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 094961431A0A2B1F00FFCA49 /* FilmSyncWebService.m */; };
 		096EDA0319EBA9DC00E1C56F /* CardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 096EDA0219EBA9DC00E1C56F /* CardsViewController.m */; };
 		09869E981A0221FD00283D91 /* tabIcon_Help_Selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 09869E921A0221FD00283D91 /* tabIcon_Help_Selected.png */; };
 		09869E991A0221FD00283D91 /* tabIcon_Help_Selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09869E931A0221FD00283D91 /* tabIcon_Help_Selected@2x.png */; };
@@ -49,7 +48,6 @@
 		0986E55B19FF60A30052187B /* SyncWave12.png in Resources */ = {isa = PBXBuildFile; fileRef = 0986E54F19FF60A30052187B /* SyncWave12.png */; };
 		098B408819FE6E09006A9910 /* HelpPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 098B408719FE6E09006A9910 /* HelpPageViewController.m */; };
 		098B408A19FE878B006A9910 /* btn-512-TwitterCroped100.png in Resources */ = {isa = PBXBuildFile; fileRef = 098B408919FE878A006A9910 /* btn-512-TwitterCroped100.png */; };
-		0996A59D19ED307A00932672 /* libFilmSync.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0996A59C19ED307A00932672 /* libFilmSync.a */; };
 		099DD5721A03AFFC00A2B3D3 /* SS_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 099DD56D1A03AFFC00A2B3D3 /* SS_1.png */; };
 		099DD5731A03AFFC00A2B3D3 /* SS_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 099DD56E1A03AFFC00A2B3D3 /* SS_2.png */; };
 		099DD5741A03AFFC00A2B3D3 /* SS_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 099DD56F1A03AFFC00A2B3D3 /* SS_3.png */; };
@@ -86,6 +84,7 @@
 		09B17BFA19F5422D0026E06D /* CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B17BF619F5422D0026E06D /* CoreData.m */; };
 		09B17BFB19F5422D0026E06D /* CoreDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B17BF819F5422D0026E06D /* CoreDataAdditions.m */; };
 		09B17BFE19F542E60026E06D /* FilmSyncModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 09B17BFC19F542E60026E06D /* FilmSyncModel.xcdatamodeld */; };
+		09BD42BC1A1F18F7000EBA91 /* libFilmSync.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09BD42BB1A1F18F7000EBA91 /* libFilmSync.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,8 +121,6 @@
 		093F1CE019F923970015779B /* BackgroundImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BackgroundImage.jpg; sourceTree = "<group>"; };
 		093F1CE119F923970015779B /* BackgroundImage@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "BackgroundImage@2x.jpg"; sourceTree = "<group>"; };
 		093F1CE219F923970015779B /* BackgroundImage@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "BackgroundImage@3x.jpg"; sourceTree = "<group>"; };
-		094961421A0A2B1F00FFCA49 /* FilmSyncWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilmSyncWebService.h; sourceTree = "<group>"; };
-		094961431A0A2B1F00FFCA49 /* FilmSyncWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilmSyncWebService.m; sourceTree = "<group>"; };
 		096EDA0119EBA9DC00E1C56F /* CardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardsViewController.h; sourceTree = "<group>"; };
 		096EDA0219EBA9DC00E1C56F /* CardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardsViewController.m; sourceTree = "<group>"; };
 		09869E921A0221FD00283D91 /* tabIcon_Help_Selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabIcon_Help_Selected.png; sourceTree = "<group>"; };
@@ -147,8 +144,6 @@
 		098B408619FE6E09006A9910 /* HelpPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpPageViewController.h; sourceTree = "<group>"; };
 		098B408719FE6E09006A9910 /* HelpPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpPageViewController.m; sourceTree = "<group>"; };
 		098B408919FE878A006A9910 /* btn-512-TwitterCroped100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-512-TwitterCroped100.png"; sourceTree = "<group>"; };
-		0996A59C19ED307A00932672 /* libFilmSync.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFilmSync.a; sourceTree = "<group>"; };
-		0996A59E19ED308300932672 /* FilmSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilmSync.h; path = FilmSync/FilmSync.h; sourceTree = "<group>"; };
 		099DD56D1A03AFFC00A2B3D3 /* SS_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SS_1.png; sourceTree = "<group>"; };
 		099DD56E1A03AFFC00A2B3D3 /* SS_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SS_2.png; sourceTree = "<group>"; };
 		099DD56F1A03AFFC00A2B3D3 /* SS_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SS_3.png; sourceTree = "<group>"; };
@@ -195,6 +190,8 @@
 		09B17BF719F5422D0026E06D /* CoreDataAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataAdditions.h; sourceTree = "<group>"; };
 		09B17BF819F5422D0026E06D /* CoreDataAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataAdditions.m; sourceTree = "<group>"; };
 		09B17BFD19F542E60026E06D /* FilmSyncModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FilmSyncModel.xcdatamodel; sourceTree = "<group>"; };
+		09BD42BA1A1F18F7000EBA91 /* FilmSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilmSync.h; sourceTree = "<group>"; };
+		09BD42BB1A1F18F7000EBA91 /* libFilmSync.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFilmSync.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,7 +207,7 @@
 				09A18ED819C3185A00DFFD62 /* CoreFoundation.framework in Frameworks */,
 				09A18E7919C3175F00DFFD62 /* CoreGraphics.framework in Frameworks */,
 				09A18E7B19C3175F00DFFD62 /* UIKit.framework in Frameworks */,
-				0996A59D19ED307A00932672 /* libFilmSync.a in Frameworks */,
+				09BD42BC1A1F18F7000EBA91 /* libFilmSync.a in Frameworks */,
 				09A18E7719C3175F00DFFD62 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,12 +270,10 @@
 		0941007A19CAA56A00E806F6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				094961421A0A2B1F00FFCA49 /* FilmSyncWebService.h */,
-				094961431A0A2B1F00FFCA49 /* FilmSyncWebService.m */,
-				096EDA0119EBA9DC00E1C56F /* CardsViewController.h */,
-				096EDA0219EBA9DC00E1C56F /* CardsViewController.m */,
 				09B17BF019F4E7200026E06D /* ProjectListViewController.h */,
 				09B17BF119F4E7200026E06D /* ProjectListViewController.m */,
+				096EDA0119EBA9DC00E1C56F /* CardsViewController.h */,
+				096EDA0219EBA9DC00E1C56F /* CardsViewController.m */,
 				0930FD9C19FA4B24000045EF /* HelpViewController.h */,
 				0930FD9D19FA4B24000045EF /* HelpViewController.m */,
 				098B408619FE6E09006A9910 /* HelpPageViewController.h */,
@@ -299,7 +294,7 @@
 		09418BF519D1947000C6588E /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				09A18EAE19C317D000DFFD62 /* FilmSyncLib */,
+				09BD42B71A1F18F7000EBA91 /* FilmSyncLib */,
 				09B17BD719F4E69C0026E06D /* ExpandingTable */,
 			);
 			name = Libraries;
@@ -416,23 +411,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		09A18EAE19C317D000DFFD62 /* FilmSyncLib */ = {
-			isa = PBXGroup;
-			children = (
-				09A18EAF19C317D000DFFD62 /* include */,
-				0996A59C19ED307A00932672 /* libFilmSync.a */,
-			);
-			path = FilmSyncLib;
-			sourceTree = "<group>";
-		};
-		09A18EAF19C317D000DFFD62 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				0996A59E19ED308300932672 /* FilmSync.h */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
 		09A18EB619C317F200DFFD62 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -514,6 +492,31 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		09BD42B71A1F18F7000EBA91 /* FilmSyncLib */ = {
+			isa = PBXGroup;
+			children = (
+				09BD42B81A1F18F7000EBA91 /* include */,
+				09BD42BB1A1F18F7000EBA91 /* libFilmSync.a */,
+			);
+			path = FilmSyncLib;
+			sourceTree = "<group>";
+		};
+		09BD42B81A1F18F7000EBA91 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				09BD42B91A1F18F7000EBA91 /* FilmSync */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		09BD42B91A1F18F7000EBA91 /* FilmSync */ = {
+			isa = PBXGroup;
+			children = (
+				09BD42BA1A1F18F7000EBA91 /* FilmSync.h */,
+			);
+			path = FilmSync;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -558,7 +561,7 @@
 		09A18E6B19C3175F00DFFD62 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = Fingent;
 				TargetAttributes = {
 					09A18E9619C3175F00DFFD62 = {
@@ -666,7 +669,6 @@
 				09B17BF219F4E7200026E06D /* ProjectListViewController.m in Sources */,
 				09B17BE619F4E69C0026E06D /* GCArraySectionController.m in Sources */,
 				09B17BFA19F5422D0026E06D /* CoreData.m in Sources */,
-				094961441A0A2B1F00FFCA49 /* FilmSyncWebService.m in Sources */,
 				09A18E8719C3175F00DFFD62 /* AppDelegate.m in Sources */,
 				09B17BFE19F542E60026E06D /* FilmSyncModel.xcdatamodeld in Sources */,
 				093B263419F7EB860037FDFE /* Project.m in Sources */,
@@ -797,14 +799,19 @@
 		09A18EA919C3175F00DFFD62 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Suresh Subburam (3D8G8JVQSW)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FilmSyncDemo/FilmSyncDemo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"FS_DEBUG=1",
+					"FSW_DEBUG=1",
+				);
 				INFOPLIST_FILE = "FilmSyncDemo/FilmSyncDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FilmSyncDemo/FilmSyncLib",
@@ -812,7 +819,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "c1f9c346-ec7c-404d-bb39-d81e012496d3";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -822,21 +829,26 @@
 		09A18EAA19C3175F00DFFD62 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Suresh Subburam (3D8G8JVQSW)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FilmSyncDemo/FilmSyncDemo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"FS_DEBUG=1",
+					"FSW_DEBUG=1",
+				);
 				INFOPLIST_FILE = "FilmSyncDemo/FilmSyncDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FilmSyncDemo/FilmSyncLib",
 					"$(PROJECT_DIR)/FilmSyncDemo/FilmSyncLib/include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "c1f9c346-ec7c-404d-bb39-d81e012496d3";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 				WRAPPER_EXTENSION = app;

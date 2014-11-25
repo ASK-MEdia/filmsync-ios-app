@@ -12,40 +12,27 @@
 
 @interface CardsViewController : UIViewController<FilmSyncDelegate,UIWebViewDelegate>
 {
-    NSArray *_markerDataArray;
-    Card *_currentCard;
-    
+    NSString *_currentCardID;
 }
 
-@property(nonatomic, strong) NSArray *markerDataArray;
-@property(nonatomic, strong) Card *currentCard;
+@property(nonatomic, strong) NSString *currentCardID;               // Current card ID
 
-@property (weak, nonatomic) IBOutlet UIImageView *cardImageView;
-@property (weak, nonatomic) IBOutlet UILabel *filmTitleLabel;
-@property (weak, nonatomic) IBOutlet UITextView *cardDescTextView;
-
-@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
-@property (weak, nonatomic) IBOutlet UIWebView *contentWebView;
-@property (weak, nonatomic) IBOutlet UITextField *cardIDTextView;
-@property (weak, nonatomic) IBOutlet UIButton *tweetButton;
-@property (weak, nonatomic) IBOutlet UIImageView *syncWaveImageView;
-@property (weak, nonatomic) IBOutlet UILabel *syncStatusLabel;
+@property (weak, nonatomic) IBOutlet UILabel *filmTitleLabel;       //Film Title
+@property (weak, nonatomic) IBOutlet UIWebView *contentWebView;     //Webview
+@property (weak, nonatomic) IBOutlet UIButton *tweetButton;         //TweetButton
+@property (weak, nonatomic) IBOutlet UIImageView *syncWaveImageView;//Sync Animation Image
+@property (weak, nonatomic) IBOutlet UILabel *syncStatusLabel;      //Sync info text
 
 @property BOOL reloadWebView;
 
 #pragma mark Singleton Methods
 + (CardsViewController *)sharedInstance;
 
-- (IBAction)getCardButtonPressed:(id)sender;
+// Tweet button pressed
 - (IBAction)tweetButtonPressed:(id)sender;
-
+// New marker received
 -(void)newMarkerReceived:(NSString *)marker;
-//-(NSDictionary *)getDataForMarker:(NSString *)marker;
-//-(void)getMarkerDict;
-
+//  Clear card view
 -(void)clearCardView;
-
--(void)addNumber:(int)number1 withNumber:(int)number2 andCompletionHandler:(void (^)(int result))completionHandler;
 
 @end

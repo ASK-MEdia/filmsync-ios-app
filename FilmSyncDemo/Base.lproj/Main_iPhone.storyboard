@@ -31,12 +31,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="q4T-Qq-Vfl">
-                                <rect key="frame" x="0.0" y="0.0" width="25" height="12"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dyR-eh-MyW">
                                 <rect key="frame" x="127" y="254" width="150" height="150"/>
                                 <subviews>
@@ -60,21 +54,7 @@
                                 <rect key="frame" x="10" y="49" width="394" height="682"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </webView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dDx-7v-hrK">
-                                <rect key="frame" x="10" y="696" width="297" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e0N-Vd-REQ">
-                                <rect key="frame" x="221" y="696" width="184" height="30"/>
-                                <state key="normal" title="Get Card">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="getCardButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="O6s-q0-2lR"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jnl-5n-isW">
+                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jnl-5n-isW">
                                 <rect key="frame" x="364" y="628" width="50" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="EHd-Yr-kVU"/>
@@ -90,26 +70,20 @@
                         </subviews>
                         <color key="backgroundColor" red="0.2156862745" green="0.3921568627" blue="0.49019607840000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="dDx-7v-hrK" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-6" id="41E-Os-Uw4"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="dDx-7v-hrK" secondAttribute="bottom" constant="10" id="43R-pj-ydD"/>
                             <constraint firstItem="5ni-B4-Rcl" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-6" id="BMe-2z-N2G"/>
                             <constraint firstItem="u81-3q-YBy" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="Bym-lA-aXL"/>
                             <constraint firstAttribute="centerX" secondItem="dyR-eh-MyW" secondAttribute="centerX" constant="5" id="HsO-qx-Yiu"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="dDx-7v-hrK" secondAttribute="trailing" constant="91" id="QQF-cw-VOz"/>
                             <constraint firstItem="5ni-B4-Rcl" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="13" id="TT1-Mb-lkH"/>
                             <constraint firstAttribute="centerX" secondItem="5ni-B4-Rcl" secondAttribute="centerX" id="TuS-9d-wOb"/>
                             <constraint firstItem="TNy-ul-nqX" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-6" id="Zrg-4t-cTK"/>
                             <constraint firstItem="TNy-ul-nqX" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="49" id="bgN-kN-Vto"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TNy-ul-nqX" secondAttribute="trailing" constant="-6" id="cLl-Pv-csu"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="e0N-Vd-REQ" secondAttribute="bottom" constant="10" id="dI8-vg-y6c"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="jnl-5n-isW" secondAttribute="bottom" constant="64" id="jjn-Be-7RB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="u81-3q-YBy" secondAttribute="trailing" constant="-16" id="kFs-gS-bZX"/>
-                            <constraint firstItem="e0N-Vd-REQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="205" id="koi-m1-RNa"/>
                             <constraint firstAttribute="centerY" secondItem="dyR-eh-MyW" secondAttribute="centerY" constant="39" id="kxa-zV-GAp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jnl-5n-isW" secondAttribute="trailing" constant="-16" id="mmg-DJ-4NN"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="u81-3q-YBy" secondAttribute="bottom" id="nKi-ue-fD2"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="TNy-ul-nqX" secondAttribute="bottom" constant="5" id="o32-Mp-7Ah"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="e0N-Vd-REQ" secondAttribute="trailing" constant="-7" id="pTR-xF-mcH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5ni-B4-Rcl" secondAttribute="trailing" constant="-6" id="t9i-HT-0w1"/>
                             <constraint firstItem="u81-3q-YBy" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="vun-V4-Eqd"/>
                         </constraints>
@@ -121,10 +95,8 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="cardIDTextView" destination="dDx-7v-hrK" id="g2J-0e-VJk"/>
                         <outlet property="contentWebView" destination="TNy-ul-nqX" id="SW6-G6-el4"/>
                         <outlet property="filmTitleLabel" destination="5ni-B4-Rcl" id="xLP-6h-tJO"/>
-                        <outlet property="statusLabel" destination="q4T-Qq-Vfl" id="t9A-FI-zOd"/>
                         <outlet property="syncStatusLabel" destination="rJ7-1c-6a6" id="fR5-Tt-aeA"/>
                         <outlet property="syncWaveImageView" destination="oVZ-vj-HzZ" id="Ktt-IQ-4kc"/>
                         <outlet property="tweetButton" destination="jnl-5n-isW" id="Io8-0v-rmx"/>
@@ -133,55 +105,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="853" y="470"/>
-        </scene>
-        <!--Cards View Controller-->
-        <scene sceneID="Ous-mb-eyM">
-            <objects>
-                <viewController storyboardIdentifier="CardView_old" id="QdN-yL-pd1" customClass="CardsViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="yZP-jC-aVp"/>
-                        <viewControllerLayoutGuide type="bottom" id="RRm-SY-dZX"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Rc2-LK-fEN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="2H8-Gk-2al">
-                                <rect key="frame" x="10" y="20" width="300" height="46"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LyJ-6L-aG6">
-                                <rect key="frame" x="8" y="81" width="304" height="239"/>
-                            </imageView>
-                            <textView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="HQw-Ss-qEu">
-                                <rect key="frame" x="8" y="328" width="304" height="142"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="textColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" preferredMaxLayoutWidth="302" translatesAutoresizingMaskIntoConstraints="NO" id="1Yq-uy-07m">
-                                <rect key="frame" x="4" y="4" width="302" height="25"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-                    <connections>
-                        <outlet property="cardDescTextView" destination="HQw-Ss-qEu" id="un9-jr-eKm"/>
-                        <outlet property="cardImageView" destination="LyJ-6L-aG6" id="8jw-d5-I3u"/>
-                        <outlet property="filmTitleLabel" destination="2H8-Gk-2al" id="sqC-g8-fJ9"/>
-                        <outlet property="statusLabel" destination="1Yq-uy-07m" id="sY9-83-q4g"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ErC-kI-NMs" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1241" y="853"/>
         </scene>
         <!--Help-->
         <scene sceneID="nuB-om-Pvo">
