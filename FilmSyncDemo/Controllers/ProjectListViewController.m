@@ -65,7 +65,8 @@
     NSMutableArray *projectControllersArray = [[NSMutableArray alloc] init];
     for (Project *prj in _projectListArray)
     {
-        NSArray *cardsArray = [prj.card allObjects];
+        //NSArray *cardsArray = [prj.card allObjects];
+        NSArray *cardsArray = [prj sortedCards];
         GCArraySectionController* projectController = [[GCArraySectionController alloc]
                                                       initWithArray:cardsArray
                                                       viewController:self];
@@ -101,7 +102,7 @@
 {
     //retrive selected card id
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    NSString *SelectedCardID = [NSString stringWithFormat:@"%012d",cell.tag];
+    NSString *SelectedCardID = [NSString stringWithFormat:@"%012ld",(long)cell.tag];
     
     if (cell.tag > 0)
     {

@@ -11,5 +11,6 @@
 @interface HelpViewController : UIViewController <UIPageViewControllerDataSource>
 
 @property (strong, nonatomic) UIPageViewController *pageController;
+@property (weak, nonatomic) IBOutlet UIImageView *HelpImageView;
 
 @end

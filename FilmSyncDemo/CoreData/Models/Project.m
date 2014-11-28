@@ -20,4 +20,12 @@
 @dynamic twitterSearch;
 @dynamic card;
 
+
+-(NSArray *)sortedCards {
+    NSSortDescriptor *sortNameDescriptor = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortNameDescriptor, nil];
+    
+    return [(NSSet*)self.card sortedArrayUsingDescriptors:sortDescriptors];
+}
+
 @end

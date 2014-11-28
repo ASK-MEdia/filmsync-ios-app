@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -60,7 +61,7 @@
                                     <constraint firstAttribute="height" constant="44" id="EHd-Yr-kVU"/>
                                     <constraint firstAttribute="width" constant="50" id="x9s-ui-pyR"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="btn-512-TwitterCroped100.png">
+                                <state key="normal" backgroundImage="tweetButton.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -118,26 +119,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Help Screen" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="yu6-vV-ldp">
-                                <rect key="frame" x="10" y="36" width="300" height="123"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="BackgroundImage.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Fi0-k8-kz5">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Help_SyncScreen.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Px-kl-dKz">
+                                <rect key="frame" x="0.0" y="20" width="320" height="228"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.2156862745" green="0.3921568627" blue="0.49019607840000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Fi0-k8-kz5" firstAttribute="leading" secondItem="3Q3-Xg-AQQ" secondAttribute="leadingMargin" constant="-16" id="0Ut-ox-Wxs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Fi0-k8-kz5" secondAttribute="trailing" constant="-16" id="3xR-AZ-ksy"/>
-                            <constraint firstItem="v3Z-R6-qBk" firstAttribute="top" secondItem="yu6-vV-ldp" secondAttribute="bottom" constant="409" id="56c-ED-9nU"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="yu6-vV-ldp" secondAttribute="trailing" constant="-6" id="Fsc-J9-zxq"/>
-                            <constraint firstItem="yu6-vV-ldp" firstAttribute="leading" secondItem="3Q3-Xg-AQQ" secondAttribute="leadingMargin" constant="-6" id="Yfm-2T-L64"/>
-                            <constraint firstItem="yu6-vV-ldp" firstAttribute="top" secondItem="m1e-0w-9JW" secondAttribute="bottom" constant="36" id="dkM-df-49p"/>
+                            <constraint firstItem="7Px-kl-dKz" firstAttribute="leading" secondItem="3Q3-Xg-AQQ" secondAttribute="leadingMargin" constant="-16" id="Axg-fR-FvG"/>
+                            <constraint firstAttribute="width" secondItem="7Px-kl-dKz" secondAttribute="height" multiplier="80:57" id="SuJ-rs-cXV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7Px-kl-dKz" secondAttribute="trailing" constant="-16" id="Yso-8b-dwf"/>
                             <constraint firstItem="Fi0-k8-kz5" firstAttribute="top" secondItem="m1e-0w-9JW" secondAttribute="bottom" id="hk1-KH-g28"/>
                             <constraint firstItem="v3Z-R6-qBk" firstAttribute="top" secondItem="Fi0-k8-kz5" secondAttribute="bottom" id="ncV-Af-eeS"/>
+                            <constraint firstItem="7Px-kl-dKz" firstAttribute="top" secondItem="m1e-0w-9JW" secondAttribute="bottom" id="qky-KJ-gvf"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Help" image="tabIcon_Help.png" id="bgJ-Nw-xZw"/>
@@ -145,6 +144,9 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <connections>
+                        <outlet property="HelpImageView" destination="7Px-kl-dKz" id="Iq0-Se-2UF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ALk-Ip-OKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -186,7 +188,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NA9-zi-ARt" id="Lrd-Vv-pSJ">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sep.png" translatesAutoresizingMaskIntoConstraints="NO" id="cmc-QO-vHP">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tableCellSeparator.png" translatesAutoresizingMaskIntoConstraints="NO" id="cmc-QO-vHP">
                                                     <rect key="frame" x="0.0" y="49" width="320" height="2"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </imageView>
@@ -226,7 +228,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dc7-CO-dXU" id="hYp-kB-xn7">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sep.png" translatesAutoresizingMaskIntoConstraints="NO" id="lFp-OP-gvM">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tableCellSeparator.png" translatesAutoresizingMaskIntoConstraints="NO" id="lFp-OP-gvM">
                                                     <rect key="frame" x="0.0" y="49" width="320" height="2"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </imageView>
@@ -301,46 +303,160 @@
         <!--Help Page View Controller-->
         <scene sceneID="W45-Jl-9qJ">
             <objects>
-                <viewController storyboardIdentifier="HelpPage" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KIC-cz-2Et" customClass="HelpPageViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HelpPage2" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KIC-cz-2Et" customClass="HelpPageViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="86E-Hf-cWV"/>
                         <viewControllerLayoutGuide type="bottom" id="dsD-cd-e2P"/>
                     </layoutGuides>
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="FTR-T2-bje">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eKg-dI-eV4">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </imageView>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7bG-yn-mGN">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="509"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eKg-dI-eV4">
+                                        <rect key="frame" x="0.0" y="20" width="320" height="228"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="eKg-dI-eV4" secondAttribute="centerX" id="F5N-is-gHl"/>
+                                    <constraint firstAttribute="width" secondItem="eKg-dI-eV4" secondAttribute="height" multiplier="80:57" id="GlT-QP-ATP"/>
+                                    <constraint firstAttribute="trailing" secondItem="eKg-dI-eV4" secondAttribute="trailing" id="X5u-5R-uT6"/>
+                                    <constraint firstItem="eKg-dI-eV4" firstAttribute="top" secondItem="7bG-yn-mGN" secondAttribute="top" constant="20" id="p9y-eO-7YG"/>
+                                    <constraint firstItem="eKg-dI-eV4" firstAttribute="leading" secondItem="7bG-yn-mGN" secondAttribute="leading" id="rvK-Dr-Zxa"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="eKg-dI-eV4" secondAttribute="trailing" constant="-16" id="9EH-7X-bIg"/>
-                            <constraint firstAttribute="centerY" secondItem="eKg-dI-eV4" secondAttribute="centerY" constant="-10" id="Fx0-WR-QYM"/>
-                            <constraint firstItem="dsD-cd-e2P" firstAttribute="top" secondItem="eKg-dI-eV4" secondAttribute="bottom" id="GRu-VM-i76"/>
-                            <constraint firstItem="eKg-dI-eV4" firstAttribute="leading" secondItem="FTR-T2-bje" secondAttribute="leadingMargin" constant="-16" id="nx7-4N-aUu"/>
+                            <constraint firstItem="dsD-cd-e2P" firstAttribute="top" secondItem="7bG-yn-mGN" secondAttribute="bottom" id="Mwa-nD-gtv"/>
+                            <constraint firstItem="7bG-yn-mGN" firstAttribute="leading" secondItem="FTR-T2-bje" secondAttribute="leadingMargin" constant="-16" id="af2-cA-aZ2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7bG-yn-mGN" secondAttribute="trailing" constant="-16" id="bJj-74-8KC"/>
                         </constraints>
                     </view>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="helpImageView" destination="eKg-dI-eV4" id="Pkr-yE-1RJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ypN-E4-zvi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1163" y="-18"/>
+            <point key="canvasLocation" x="1572" y="56"/>
+        </scene>
+        <!--Help Page View Controller-->
+        <scene sceneID="riW-4N-kXi">
+            <objects>
+                <viewController storyboardIdentifier="HelpPage" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yut-z4-7ll" customClass="HelpPageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EHg-J7-kCq"/>
+                        <viewControllerLayoutGuide type="bottom" id="0Eh-ih-t2S"/>
+                    </layoutGuides>
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="AIL-TU-M2T">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jCa-HU-m98">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pZx-DF-e9e">
+                                <rect key="frame" x="114" y="501" width="93" height="30"/>
+                                <state key="normal" title="filmSync.com">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loadFilmsyncURLButtonTouched:" destination="Yut-z4-7ll" eventType="touchUpInside" id="W4p-Z9-Ner"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="pZx-DF-e9e" secondAttribute="centerX" constant="-0.5" id="5Ep-wJ-OwG"/>
+                            <constraint firstAttribute="centerY" secondItem="jCa-HU-m98" secondAttribute="centerY" constant="-10" id="5Zb-aF-J0Q"/>
+                            <constraint firstItem="0Eh-ih-t2S" firstAttribute="top" secondItem="jCa-HU-m98" secondAttribute="bottom" id="SyS-Wx-X2G"/>
+                            <constraint firstItem="0Eh-ih-t2S" firstAttribute="top" secondItem="pZx-DF-e9e" secondAttribute="bottom" constant="37" id="cEp-ye-QaW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jCa-HU-m98" secondAttribute="trailing" constant="-16" id="l5I-fM-a1n"/>
+                            <constraint firstItem="jCa-HU-m98" firstAttribute="leading" secondItem="AIL-TU-M2T" secondAttribute="leadingMargin" constant="-16" id="pbF-0C-3u0"/>
+                        </constraints>
+                    </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <connections>
+                        <outlet property="filmsyncURLButton" destination="pZx-DF-e9e" id="Kmy-yS-YvG"/>
+                        <outlet property="helpImageView" destination="jCa-HU-m98" id="yUW-C2-2Yt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D34-rr-zbU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1278" y="612"/>
+        </scene>
+        <!--Help Page View Controller-->
+        <scene sceneID="1KE-BV-KOT">
+            <objects>
+                <viewController storyboardIdentifier="HelpPageHold" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ks4-oe-AK5" customClass="HelpPageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="byU-hz-DwH"/>
+                        <viewControllerLayoutGuide type="bottom" id="6qF-qk-O0S"/>
+                    </layoutGuides>
+                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="XRk-Ff-AGj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yyL-ea-WwZ">
+                                <rect key="frame" x="80" y="-84" width="34" height="91"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <connections>
+                        <outlet property="helpContentView" destination="3So-gw-Oof" id="4rq-ux-mdK"/>
+                        <outlet property="helpImageView" destination="yyL-ea-WwZ" id="x99-kW-Vm4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sVI-lA-rA2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view clipsSubviews="YES" contentMode="scaleToFill" id="3So-gw-Oof" userLabel="HelpContentView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="187"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="For further support or information please go to www.fingent.com" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zU5-yd-RXf">
+                            <rect key="frame" x="0.0" y="79" width="320" height="91"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                        </textView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tabIcon_ProjectList@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="18v-fz-EvC">
+                            <rect key="frame" x="125" y="15" width="70" height="70"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+            </objects>
+            <point key="canvasLocation" x="1093" y="-5"/>
         </scene>
     </scenes>
     <resources>
         <image name="BackgroundImage.jpg" width="320" height="480"/>
+        <image name="Help_SyncScreen.png" width="320" height="228"/>
         <image name="SyncWave01.png" width="370" height="230"/>
-        <image name="btn-512-TwitterCroped100.png" width="100" height="88"/>
-        <image name="sep.png" width="688" height="2"/>
         <image name="tabIcon_Help.png" width="30" height="30"/>
         <image name="tabIcon_ProjectList.png" width="30" height="30"/>
+        <image name="tabIcon_ProjectList@3x.png" width="90" height="90"/>
+        <image name="tableCellSeparator.png" width="688" height="2"/>
+        <image name="tweetButton.png" width="50" height="44"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

@@ -23,7 +23,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *syncWaveImageView;//Sync Animation Image
 @property (weak, nonatomic) IBOutlet UILabel *syncStatusLabel;      //Sync info text
 
-@property BOOL reloadWebView;
 
 #pragma mark Singleton Methods
 + (CardsViewController *)sharedInstance;

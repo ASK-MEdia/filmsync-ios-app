@@ -29,4 +29,5 @@
 - (void)addCard:(NSSet *)values;
 - (void)removeCard:(NSSet *)values;
 
+-(NSArray *)sortedCards;
 @end

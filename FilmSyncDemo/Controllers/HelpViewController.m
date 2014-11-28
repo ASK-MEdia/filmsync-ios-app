@@ -11,7 +11,7 @@
 
 
 
-#define kTotalScreens   4
+#define kTotalScreens   5
 
 @interface HelpViewController ()
 
@@ -23,17 +23,33 @@
     
     [super viewDidLoad];
     
-    //setup pageview controller
-    self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
-    self.pageController.dataSource = self;
-    CGRect viewFrame = [[self view] bounds];
-    [[self.pageController view] setFrame:CGRectMake(0.0, 0.0,viewFrame.size.width,viewFrame.size.height - 10)];
-    HelpPageViewController *initialViewController = [self viewControllerAtIndex:0];
-    NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
-    [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-    [self addChildViewController:self.pageController];
-    [[self view] addSubview:[self.pageController view]];
-    [self.pageController didMoveToParentViewController:self];
+    
+    self.pageController = nil;
+    
+    
+    NSLog(@"helpImageSize w:%f h:%f",self.HelpImageView.frame.size.width,self.HelpImageView.frame.size.height);
+    
+    
+}
+-(void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:YES];
+    
+    if (self.pageController == nil)
+    {//setup pageview controller
+        self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
+        self.pageController.dataSource = self;
+        CGRect viewFrame = [[self view] bounds];
+        [[self.pageController view] setFrame:CGRectMake(0.0, 0.0,viewFrame.size.width,viewFrame.size.height - 10)];
+        HelpPageViewController *initialViewController = [self viewControllerAtIndex:0];
+        NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
+        [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        [self addChildViewController:self.pageController];
+        [[self view] addSubview:[self.pageController view]];
+        [self.pageController didMoveToParentViewController:self];
+        
+        
+    }
     
 }
 
@@ -47,7 +63,16 @@
 - (HelpPageViewController *)viewControllerAtIndex:(NSUInteger)index {
     //Get the controller from the storyboard.
     HelpPageViewController *childViewController = (HelpPageViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"HelpPage"];
+    //CGSize helpViewSize = childViewController.helpContentView.frame.size;
+    //CGSize viewSize = self.view.frame.size;
+    childViewController.helpImageSize = self.HelpImageView.frame.size;
+    //[childViewController.helpContentView setFrame:CGRectMake(viewSize.width/2 - helpViewSize.width/2, helpViewSize.height + 50, helpViewSize.width, viewSize.height - helpImageSize.height - 100)];
+    
     childViewController.index = index;
+    
+    //NSLog(@"#2 helpImageSize w:%f h:%f",self.HelpImageView.frame.size.width,self.HelpImageView.frame.size.height);
+    //NSLog(@"#2 view w:%f h:%f",self.view.frame.size.width,self.view.frame.size.height);
+    //NSLog(@"#2 view bounds w:%f h:%f",self.view.bounds.size.width,self.view.bounds.size.height);
     
     //HelpPage
     return childViewController;
