@@ -10,10 +10,10 @@
 #import "HelpPageViewController.h"
 
 
-
-#define kTotalScreens   5
-
 @interface HelpViewController ()
+{
+    int totalPagesCount;
+}
 
 @end
 
@@ -29,6 +29,11 @@
     
     NSLog(@"helpImageSize w:%f h:%f",self.HelpImageView.frame.size.width,self.HelpImageView.frame.size.height);
     
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"HelpScreenPageList" ofType:@"plist"];
+    NSMutableDictionary *plistDict = [NSMutableDictionary dictionaryWithContentsOfFile:plistPath];
+    self.pagesArray = [plistDict objectForKey:@"Pages"];
+    
+    totalPagesCount = [self.pagesArray count];
     
 }
 -(void) viewDidAppear:(BOOL)animated
@@ -47,6 +52,7 @@
         [self addChildViewController:self.pageController];
         [[self view] addSubview:[self.pageController view]];
         [self.pageController didMoveToParentViewController:self];
+        
         
         
     }
@@ -69,6 +75,8 @@
     //[childViewController.helpContentView setFrame:CGRectMake(viewSize.width/2 - helpViewSize.width/2, helpViewSize.height + 50, helpViewSize.width, viewSize.height - helpImageSize.height - 100)];
     
     childViewController.index = index;
+    childViewController.pageDict = [self.pagesArray objectAtIndex:index];
+    
     
     //NSLog(@"#2 helpImageSize w:%f h:%f",self.HelpImageView.frame.size.width,self.HelpImageView.frame.size.height);
     //NSLog(@"#2 view w:%f h:%f",self.view.frame.size.width,self.view.frame.size.height);
@@ -99,7 +107,7 @@
     
     index++;
     
-    if (index == kTotalScreens) {
+    if (index == totalPagesCount) {
         return nil;
     }
     return [self viewControllerAtIndex:index];
@@ -108,7 +116,7 @@
 
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
     // The number of items reflected in the page indicator.
-    return kTotalScreens;
+    return totalPagesCount;
 }
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {

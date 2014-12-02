@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UIView *helpContentView;
 @property (weak, nonatomic) IBOutlet UIButton *filmsyncURLButton;
 
+@property (assign , nonatomic) NSDictionary *pageDict;
+
 
 - (IBAction)loadFilmsyncURLButtonTouched:(id)sender;
 

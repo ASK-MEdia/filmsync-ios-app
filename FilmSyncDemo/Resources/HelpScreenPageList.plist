@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Pages</key>
+	<array>
+		<dict>
+			<key>icon</key>
+			<string>help_icon.png</string>
+			<key>description</key>
+			<string>FilmSync provides synced experiences that use the audio from a film, show or presentation you are watching. It is recommended that the volume of the Media device is turned up and is audible.</string>
+		</dict>
+		<dict>
+			<key>icon</key>
+			<string>sync_icon.png</string>
+			<key>description</key>
+			<string>Press the large sync button here to begin syncing.</string>
+		</dict>
+		<dict>
+			<key>icon</key>
+			<string>list_icon.png</string>
+			<key>description</key>
+			<string>The left button provides access to any content you have already synched with.</string>
+		</dict>
+		<dict>
+			<key>icon</key>
+			<string>web_icon.png</string>
+			<key>description</key>
+			<string>For further support or information please go to www.filmsync.org</string>
+		</dict>
+	</array>
+</dict>
+</plist>
