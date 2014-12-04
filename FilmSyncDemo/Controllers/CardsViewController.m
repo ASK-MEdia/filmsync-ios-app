@@ -67,6 +67,9 @@ static CardsViewController *sharedInstance = nil;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //Google Analytics : Set screen name for identification
+    self.screenName = @"Sync Screen";
+    
     sharedInstance = self;
     
     self.currentCardID = @"";

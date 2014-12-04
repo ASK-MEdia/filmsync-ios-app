@@ -10,8 +10,11 @@
 		090AECA31A2DA0CE007FD67A /* HelpScreenPageList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 090AECA21A2DA0CE007FD67A /* HelpScreenPageList.plist */; };
 		090AECA81A2DB966007FD67A /* help_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 090AECA41A2DB966007FD67A /* help_icon.png */; };
 		090AECA91A2DB966007FD67A /* list_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 090AECA51A2DB966007FD67A /* list_icon.png */; };
-		090AECAA1A2DB966007FD67A /* sync_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 090AECA61A2DB966007FD67A /* sync_icon.png */; };
-		090AECAB1A2DB966007FD67A /* web_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 090AECA71A2DB966007FD67A /* web_icon.png */; };
+		090AECB41A2DDB18007FD67A /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 090AECB31A2DDB18007FD67A /* libGoogleAnalyticsServices.a */; };
+		090AECB61A2DDB59007FD67A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 090AECB51A2DDB59007FD67A /* SystemConfiguration.framework */; };
+		090AECB81A2DDB6B007FD67A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 090AECB71A2DDB6B007FD67A /* libz.dylib */; };
+		090AECBA1A2DE1A4007FD67A /* sync_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 090AECB91A2DE1A4007FD67A /* sync_icon.png */; };
+		090AECBC1A2DE350007FD67A /* web_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 090AECBB1A2DE350007FD67A /* web_icon.png */; };
 		093082561A25E0EC0013502E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 093082551A25E0EC0013502E /* AppDelegate.m */; };
 		093082601A25E0FB0013502E /* CardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 093082591A25E0FB0013502E /* CardsViewController.m */; };
 		093082611A25E0FB0013502E /* HelpPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0930825B1A25E0FB0013502E /* HelpPageViewController.m */; };
@@ -114,8 +117,17 @@
 		090AECA21A2DA0CE007FD67A /* HelpScreenPageList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HelpScreenPageList.plist; sourceTree = "<group>"; };
 		090AECA41A2DB966007FD67A /* help_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help_icon.png; sourceTree = "<group>"; };
 		090AECA51A2DB966007FD67A /* list_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_icon.png; sourceTree = "<group>"; };
-		090AECA61A2DB966007FD67A /* sync_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sync_icon.png; sourceTree = "<group>"; };
-		090AECA71A2DB966007FD67A /* web_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = web_icon.png; sourceTree = "<group>"; };
+		090AECAD1A2DDB18007FD67A /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		090AECAE1A2DDB18007FD67A /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		090AECAF1A2DDB18007FD67A /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		090AECB01A2DDB18007FD67A /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		090AECB11A2DDB18007FD67A /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		090AECB21A2DDB18007FD67A /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		090AECB31A2DDB18007FD67A /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		090AECB51A2DDB59007FD67A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		090AECB71A2DDB6B007FD67A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		090AECB91A2DE1A4007FD67A /* sync_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sync_icon.png; sourceTree = "<group>"; };
+		090AECBB1A2DE350007FD67A /* web_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = web_icon.png; sourceTree = "<group>"; };
 		093082541A25E0EC0013502E /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		093082551A25E0EC0013502E /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		093082581A25E0FB0013502E /* CardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardsViewController.h; sourceTree = "<group>"; };
@@ -225,6 +237,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				090AECB81A2DDB6B007FD67A /* libz.dylib in Frameworks */,
+				090AECB61A2DDB59007FD67A /* SystemConfiguration.framework in Frameworks */,
 				09A18EDD19C3214900DFFD62 /* libc++.dylib in Frameworks */,
 				09A18ED419C3185A00DFFD62 /* Accelerate.framework in Frameworks */,
 				09A18ED519C3185A00DFFD62 /* AudioToolbox.framework in Frameworks */,
@@ -233,6 +247,7 @@
 				09A18ED819C3185A00DFFD62 /* CoreFoundation.framework in Frameworks */,
 				09A18E7919C3175F00DFFD62 /* CoreGraphics.framework in Frameworks */,
 				09A18E7B19C3175F00DFFD62 /* UIKit.framework in Frameworks */,
+				090AECB41A2DDB18007FD67A /* libGoogleAnalyticsServices.a in Frameworks */,
 				0930828A1A25E14C0013502E /* libFilmSync.a in Frameworks */,
 				09A18E7719C3175F00DFFD62 /* Foundation.framework in Frameworks */,
 			);
@@ -250,6 +265,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		090AECAC1A2DDB18007FD67A /* GoogleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				090AECAD1A2DDB18007FD67A /* GAI.h */,
+				090AECAE1A2DDB18007FD67A /* GAIDictionaryBuilder.h */,
+				090AECAF1A2DDB18007FD67A /* GAIFields.h */,
+				090AECB01A2DDB18007FD67A /* GAILogger.h */,
+				090AECB11A2DDB18007FD67A /* GAITrackedViewController.h */,
+				090AECB21A2DDB18007FD67A /* GAITracker.h */,
+				090AECB31A2DDB18007FD67A /* libGoogleAnalyticsServices.a */,
+			);
+			path = GoogleAnalytics;
+			sourceTree = "<group>";
+		};
 		093082531A25E0EC0013502E /* Delegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,8 +317,9 @@
 		0930826B1A25E14C0013502E /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				0930826C1A25E14C0013502E /* ExpandingTable */,
 				0930827B1A25E14C0013502E /* FilmSyncLib */,
+				0930826C1A25E14C0013502E /* ExpandingTable */,
+				090AECAC1A2DDB18007FD67A /* GoogleAnalytics */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -427,8 +457,8 @@
 				093082EE1A25F34A0013502E /* Help_SyncScreen@2x.png */,
 				090AECA41A2DB966007FD67A /* help_icon.png */,
 				090AECA51A2DB966007FD67A /* list_icon.png */,
-				090AECA61A2DB966007FD67A /* sync_icon.png */,
-				090AECA71A2DB966007FD67A /* web_icon.png */,
+				090AECB91A2DE1A4007FD67A /* sync_icon.png */,
+				090AECBB1A2DE350007FD67A /* web_icon.png */,
 				093082A61A25E15F0013502E /* FilmSync_SS */,
 			);
 			path = HelpScreen;
@@ -518,6 +548,8 @@
 		09A18E7519C3175F00DFFD62 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				090AECB71A2DDB6B007FD67A /* libz.dylib */,
+				090AECB51A2DDB59007FD67A /* SystemConfiguration.framework */,
 				09A18EDC19C3214900DFFD62 /* libc++.dylib */,
 				09A18ECF19C3185A00DFFD62 /* Accelerate.framework */,
 				09A18ED019C3185A00DFFD62 /* AudioToolbox.framework */,
@@ -673,11 +705,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				093082CE1A25E15F0013502E /* tabIcon_Sync@2x.png in Resources */,
-				090AECAA1A2DB966007FD67A /* sync_icon.png in Resources */,
 				093082D11A25E15F0013502E /* tabIcon_Sync_Selected@2x.png in Resources */,
 				093082E41A25E15F0013502E /* SyncWave12.png in Resources */,
 				093082F61A25F3A30013502E /* Help_SyncScreen.png in Resources */,
-				090AECAB1A2DB966007FD67A /* web_icon.png in Resources */,
+				090AECBA1A2DE1A4007FD67A /* sync_icon.png in Resources */,
+				090AECBC1A2DE350007FD67A /* web_icon.png in Resources */,
 				09829BE81A2883F60043C8C2 /* SS_4.png in Resources */,
 				090AECA81A2DB966007FD67A /* help_icon.png in Resources */,
 				093082E21A25E15F0013502E /* SyncWave10.png in Resources */,
@@ -893,7 +925,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Suresh Subburam (3D8G8JVQSW)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Fingent Corp (XU3XTNFKT8)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FilmSyncDemo/FilmSyncDemo-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -907,10 +939,11 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FilmSyncDemo/Libraries/FilmSyncLib",
+					"$(PROJECT_DIR)/FilmSyncDemo/Libraries/GoogleAnalytics",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c1f9c346-ec7c-404d-bb39-d81e012496d3";
+				PROVISIONING_PROFILE = "068f6c3b-fcf7-4c04-b8db-5715363e53d8";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -922,7 +955,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Suresh Subburam (3D8G8JVQSW)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Fingent Corp (XU3XTNFKT8)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FilmSyncDemo/FilmSyncDemo-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -936,9 +969,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FilmSyncDemo/Libraries/FilmSyncLib",
+					"$(PROJECT_DIR)/FilmSyncDemo/Libraries/GoogleAnalytics",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c1f9c346-ec7c-404d-bb39-d81e012496d3";
+				PROVISIONING_PROFILE = "068f6c3b-fcf7-4c04-b8db-5715363e53d8";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 				WRAPPER_EXTENSION = app;

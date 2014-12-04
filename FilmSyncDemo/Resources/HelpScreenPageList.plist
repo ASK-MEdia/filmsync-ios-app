@@ -14,7 +14,7 @@
 			<key>icon</key>
 			<string>sync_icon.png</string>
 			<key>description</key>
-			<string>Press the large sync button here to begin syncing.</string>
+            <string>Press the large sync button here to begin syncing.Then wait for the video or broadcast to begin or get to the next synced moment. It sync based on the audio of the source so please have your volume turned up to the level you can hear it.The app will continue to stay in sync and listen for the next synced moment even when you are viewing content.</string>
 		</dict>
 		<dict>
 			<key>icon</key>

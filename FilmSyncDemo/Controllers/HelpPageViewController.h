@@ -10,15 +10,9 @@
 
 @interface HelpPageViewController : UIViewController
 
-@property (assign, nonatomic) NSInteger index;
-@property (assign , nonatomic) CGSize helpImageSize;
-@property (weak, nonatomic) IBOutlet UIImageView *helpImageView;
-@property (weak, nonatomic) IBOutlet UIView *helpContentView;
-@property (weak, nonatomic) IBOutlet UIButton *filmsyncURLButton;
-
-@property (assign , nonatomic) NSDictionary *pageDict;
-
-
-- (IBAction)loadFilmsyncURLButtonTouched:(id)sender;
+@property (assign, nonatomic) NSInteger index;          //index of this page
+@property (assign , nonatomic) CGSize helpImageSize;    //size of top image view ( this is used to calculate the aviable space for content)
+@property (assign , nonatomic) NSDictionary *pageDict;  //dictionary containing contents for this page
+@property (strong, nonatomic) IBOutlet UITextView *helpTextView;    //text view for showing description
 
 @end

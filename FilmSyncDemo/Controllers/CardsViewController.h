@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GAITrackedViewController.h"
+
 #import "FilmSync.h"
 #import "Card.h"
 
-@interface CardsViewController : UIViewController<FilmSyncDelegate,UIWebViewDelegate>
+@interface CardsViewController : GAITrackedViewController <FilmSyncDelegate,UIWebViewDelegate>
 {
     NSString *_currentCardID;
 }

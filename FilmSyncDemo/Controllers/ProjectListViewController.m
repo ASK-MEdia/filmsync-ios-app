@@ -27,6 +27,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+    //Google Analytics : Set screen name for identification
+    self.screenName = @"Project List Screen";
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated

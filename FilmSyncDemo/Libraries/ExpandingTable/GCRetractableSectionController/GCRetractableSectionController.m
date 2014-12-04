@@ -117,7 +117,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:contentCellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.indentationLevel = 1;
+        cell.indentationLevel = 2;
 	}
 	cell.textLabel.text = [self titleContentForRow:row];
 	return cell;

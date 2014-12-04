@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GAITrackedViewController.h"
 
-@interface HelpViewController : UIViewController <UIPageViewControllerDataSource>
+@interface HelpViewController : GAITrackedViewController <UIPageViewControllerDataSource>
 
-@property (strong, nonatomic) UIPageViewController *pageController;
-@property (strong, nonatomic) NSArray *pagesArray;
-@property (weak, nonatomic) IBOutlet UIImageView *HelpImageView;
+@property (strong, nonatomic) UIPageViewController *pageController;     //PageController
+@property (strong, nonatomic) NSArray *pagesArray;                      //Array of page contents config
+@property (weak, nonatomic) IBOutlet UIImageView *HelpImageView;        //Top image
 
 @end

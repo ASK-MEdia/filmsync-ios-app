@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GAITrackedViewController.h"
 
-@interface ProjectListViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+@interface ProjectListViewController : GAITrackedViewController <UITableViewDataSource,UITableViewDelegate>
 {
     NSMutableArray *_projectListArray;  // store Project objects
 }

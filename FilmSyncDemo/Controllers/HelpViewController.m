@@ -24,16 +24,27 @@
     [super viewDidLoad];
     
     
+    //Google Analytics : Set screen name for identification
+    self.screenName = @"Help Screen";
+    
     self.pageController = nil;
-    
-    
-    NSLog(@"helpImageSize w:%f h:%f",self.HelpImageView.frame.size.width,self.HelpImageView.frame.size.height);
     
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"HelpScreenPageList" ofType:@"plist"];
     NSMutableDictionary *plistDict = [NSMutableDictionary dictionaryWithContentsOfFile:plistPath];
     self.pagesArray = [plistDict objectForKey:@"Pages"];
     
     totalPagesCount = [self.pagesArray count];
+    
+    if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad )
+    {   /* Device is iPad */
+        //Set top image
+        [self.HelpImageView setImage:[UIImage imageNamed:@"Help_SyncScreen@2x.png"]];
+    }
+    else
+    {   /* Device is iPhone or iPod touch.*/
+        //Set top image
+        [self.HelpImageView setImage:[UIImage imageNamed:@"Help_SyncScreen.png"]];
+    }
     
 }
 -(void) viewDidAppear:(BOOL)animated
@@ -49,12 +60,11 @@
         HelpPageViewController *initialViewController = [self viewControllerAtIndex:0];
         NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
         [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        //add pageview controller
         [self addChildViewController:self.pageController];
         [[self view] addSubview:[self.pageController view]];
         [self.pageController didMoveToParentViewController:self];
-        
-        
-        
+ 
     }
     
 }
@@ -69,19 +79,11 @@
 - (HelpPageViewController *)viewControllerAtIndex:(NSUInteger)index {
     //Get the controller from the storyboard.
     HelpPageViewController *childViewController = (HelpPageViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"HelpPage"];
-    //CGSize helpViewSize = childViewController.helpContentView.frame.size;
-    //CGSize viewSize = self.view.frame.size;
     childViewController.helpImageSize = self.HelpImageView.frame.size;
-    //[childViewController.helpContentView setFrame:CGRectMake(viewSize.width/2 - helpViewSize.width/2, helpViewSize.height + 50, helpViewSize.width, viewSize.height - helpImageSize.height - 100)];
     
     childViewController.index = index;
     childViewController.pageDict = [self.pagesArray objectAtIndex:index];
-    
-    
-    //NSLog(@"#2 helpImageSize w:%f h:%f",self.HelpImageView.frame.size.width,self.HelpImageView.frame.size.height);
-    //NSLog(@"#2 view w:%f h:%f",self.view.frame.size.width,self.view.frame.size.height);
-    //NSLog(@"#2 view bounds w:%f h:%f",self.view.bounds.size.width,self.view.bounds.size.height);
-    
+
     //HelpPage
     return childViewController;
     

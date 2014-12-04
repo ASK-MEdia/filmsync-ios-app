@@ -23,11 +23,11 @@
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
     [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:142.0f/255.0f green:213.0f/255.0f blue:255.0f/255.0f alpha:1], NSForegroundColorAttributeName, nil] forState:UIControlStateSelected];
     
-    /*
-    UIPageControl *pageControl = [UIPageControl appearance];
-    pageControl.pageIndicatorTintColor = [UIColor whiteColor];
-    pageControl.currentPageIndicatorTintColor = [UIColor redColor];
-    pageControl.backgroundColor = [UIColor clearColor];*/
+    //Google Analytics configurations
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    [[GAI sharedInstance].logger setLogLevel:kGAILogLevelError];
+    [GAI sharedInstance].dispatchInterval = 30;
+    id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-34218099-3"];
     
     self.isCenterButtonAdded = NO;
     return YES;

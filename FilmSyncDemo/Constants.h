@@ -11,8 +11,8 @@
 
 
 
-//#define kFilmSyncAPIBaseUrl         @"http://10.10.2.31/filmsync"
-#define kFilmSyncAPIBaseUrl         @"http://filmsync.fingent.net"
+
+#define kFilmSyncAPIBaseUrl         @"http://filmsync.org"
 #define kFilmSyncAPISecret          @"1253698547"
 #define kFilmSyncTwitterTag         @"@FilmSyncApp"
 
