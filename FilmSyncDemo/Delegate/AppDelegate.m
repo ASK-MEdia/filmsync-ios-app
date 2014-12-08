@@ -27,7 +27,7 @@
     [GAI sharedInstance].trackUncaughtExceptions = YES;
     [[GAI sharedInstance].logger setLogLevel:kGAILogLevelError];
     [GAI sharedInstance].dispatchInterval = 30;
-    id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-34218099-3"];
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-34218099-3"];
     
     self.isCenterButtonAdded = NO;
     return YES;

@@ -33,7 +33,7 @@
     NSMutableDictionary *plistDict = [NSMutableDictionary dictionaryWithContentsOfFile:plistPath];
     self.pagesArray = [plistDict objectForKey:@"Pages"];
     
-    totalPagesCount = [self.pagesArray count];
+    totalPagesCount = (int) [self.pagesArray count];
     
     if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad )
     {   /* Device is iPad */

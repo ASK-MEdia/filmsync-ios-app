@@ -32,7 +32,6 @@
 		093082871A25E14C0013502E /* UpAccessory@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 093082781A25E14C0013502E /* UpAccessory@2x.png */; };
 		093082881A25E14C0013502E /* UpAccessoryWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 093082791A25E14C0013502E /* UpAccessoryWhite.png */; };
 		093082891A25E14C0013502E /* UpAccessoryWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0930827A1A25E14C0013502E /* UpAccessoryWhite@2x.png */; };
-		0930828A1A25E14C0013502E /* libFilmSync.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0930827F1A25E14C0013502E /* libFilmSync.a */; };
 		093082BE1A25E15F0013502E /* BackgroundImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0930828F1A25E15F0013502E /* BackgroundImage.jpg */; };
 		093082BF1A25E15F0013502E /* BackgroundImage@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 093082901A25E15F0013502E /* BackgroundImage@2x.jpg */; };
 		093082C01A25E15F0013502E /* BackgroundImage@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 093082911A25E15F0013502E /* BackgroundImage@3x.jpg */; };
@@ -101,6 +100,7 @@
 		09B17BFA19F5422D0026E06D /* CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B17BF619F5422D0026E06D /* CoreData.m */; };
 		09B17BFB19F5422D0026E06D /* CoreDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B17BF819F5422D0026E06D /* CoreDataAdditions.m */; };
 		09B17BFE19F542E60026E06D /* FilmSyncModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 09B17BFC19F542E60026E06D /* FilmSyncModel.xcdatamodeld */; };
+		09B81D611A359EB200E30C67 /* libFilmSync.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09B81D601A359EB200E30C67 /* libFilmSync.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,8 +154,6 @@
 		093082781A25E14C0013502E /* UpAccessory@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UpAccessory@2x.png"; sourceTree = "<group>"; };
 		093082791A25E14C0013502E /* UpAccessoryWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UpAccessoryWhite.png; sourceTree = "<group>"; };
 		0930827A1A25E14C0013502E /* UpAccessoryWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UpAccessoryWhite@2x.png"; sourceTree = "<group>"; };
-		0930827E1A25E14C0013502E /* FilmSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilmSync.h; sourceTree = "<group>"; };
-		0930827F1A25E14C0013502E /* libFilmSync.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFilmSync.a; sourceTree = "<group>"; };
 		0930828F1A25E15F0013502E /* BackgroundImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BackgroundImage.jpg; sourceTree = "<group>"; };
 		093082901A25E15F0013502E /* BackgroundImage@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "BackgroundImage@2x.jpg"; sourceTree = "<group>"; };
 		093082911A25E15F0013502E /* BackgroundImage@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "BackgroundImage@3x.jpg"; sourceTree = "<group>"; };
@@ -230,6 +228,8 @@
 		09B17BF719F5422D0026E06D /* CoreDataAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataAdditions.h; sourceTree = "<group>"; };
 		09B17BF819F5422D0026E06D /* CoreDataAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataAdditions.m; sourceTree = "<group>"; };
 		09B17BFD19F542E60026E06D /* FilmSyncModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FilmSyncModel.xcdatamodel; sourceTree = "<group>"; };
+		09B81D5F1A359EB200E30C67 /* FilmSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilmSync.h; sourceTree = "<group>"; };
+		09B81D601A359EB200E30C67 /* libFilmSync.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFilmSync.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,12 +243,12 @@
 				09A18ED419C3185A00DFFD62 /* Accelerate.framework in Frameworks */,
 				09A18ED519C3185A00DFFD62 /* AudioToolbox.framework in Frameworks */,
 				09A18ED619C3185A00DFFD62 /* AVFoundation.framework in Frameworks */,
+				09B81D611A359EB200E30C67 /* libFilmSync.a in Frameworks */,
 				09A18ED719C3185A00DFFD62 /* CoreAudio.framework in Frameworks */,
 				09A18ED819C3185A00DFFD62 /* CoreFoundation.framework in Frameworks */,
 				09A18E7919C3175F00DFFD62 /* CoreGraphics.framework in Frameworks */,
 				09A18E7B19C3175F00DFFD62 /* UIKit.framework in Frameworks */,
 				090AECB41A2DDB18007FD67A /* libGoogleAnalyticsServices.a in Frameworks */,
-				0930828A1A25E14C0013502E /* libFilmSync.a in Frameworks */,
 				09A18E7719C3175F00DFFD62 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,7 +317,7 @@
 		0930826B1A25E14C0013502E /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				0930827B1A25E14C0013502E /* FilmSyncLib */,
+				09B81D5C1A359EB200E30C67 /* FilmSyncLib */,
 				0930826C1A25E14C0013502E /* ExpandingTable */,
 				090AECAC1A2DDB18007FD67A /* GoogleAnalytics */,
 			);
@@ -357,31 +357,6 @@
 				0930827A1A25E14C0013502E /* UpAccessoryWhite@2x.png */,
 			);
 			path = Images;
-			sourceTree = "<group>";
-		};
-		0930827B1A25E14C0013502E /* FilmSyncLib */ = {
-			isa = PBXGroup;
-			children = (
-				0930827C1A25E14C0013502E /* include */,
-				0930827F1A25E14C0013502E /* libFilmSync.a */,
-			);
-			path = FilmSyncLib;
-			sourceTree = "<group>";
-		};
-		0930827C1A25E14C0013502E /* include */ = {
-			isa = PBXGroup;
-			children = (
-				0930827D1A25E14C0013502E /* FilmSync */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		0930827D1A25E14C0013502E /* FilmSync */ = {
-			isa = PBXGroup;
-			children = (
-				0930827E1A25E14C0013502E /* FilmSync.h */,
-			);
-			path = FilmSync;
 			sourceTree = "<group>";
 		};
 		0930828B1A25E15F0013502E /* Resources */ = {
@@ -626,6 +601,31 @@
 				09B17BF819F5422D0026E06D /* CoreDataAdditions.m */,
 			);
 			path = "DataBase Handler";
+			sourceTree = "<group>";
+		};
+		09B81D5C1A359EB200E30C67 /* FilmSyncLib */ = {
+			isa = PBXGroup;
+			children = (
+				09B81D5D1A359EB200E30C67 /* include */,
+				09B81D601A359EB200E30C67 /* libFilmSync.a */,
+			);
+			path = FilmSyncLib;
+			sourceTree = "<group>";
+		};
+		09B81D5D1A359EB200E30C67 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				09B81D5E1A359EB200E30C67 /* FilmSync */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		09B81D5E1A359EB200E30C67 /* FilmSync */ = {
+			isa = PBXGroup;
+			children = (
+				09B81D5F1A359EB200E30C67 /* FilmSync.h */,
+			);
+			path = FilmSync;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -925,7 +925,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Fingent Corp (XU3XTNFKT8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Suresh Subburam (3D8G8JVQSW)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FilmSyncDemo/FilmSyncDemo-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -943,7 +943,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "068f6c3b-fcf7-4c04-b8db-5715363e53d8";
+				PROVISIONING_PROFILE = "4afa8a64-4307-4caa-8f5f-81dd01a84366";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -955,7 +955,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Fingent Corp (XU3XTNFKT8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Suresh Subburam (3D8G8JVQSW)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FilmSyncDemo/FilmSyncDemo-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -972,7 +972,7 @@
 					"$(PROJECT_DIR)/FilmSyncDemo/Libraries/GoogleAnalytics",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "068f6c3b-fcf7-4c04-b8db-5715363e53d8";
+				PROVISIONING_PROFILE = "4afa8a64-4307-4caa-8f5f-81dd01a84366";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 				WRAPPER_EXTENSION = app;
