@@ -1,5 +1,3 @@
-
-
 ##Before You begin:
 
 #Before implementing the SDK, make sure you have the following,
