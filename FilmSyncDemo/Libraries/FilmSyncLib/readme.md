@@ -1,26 +1,36 @@
-# Before You begin:
+## Before You begin:
 
-## Before implementing the SDK, make sure you have the following,
+### Before implementing the SDK, make sure you have the following,
 
 * FilmSync iOS Library downloaded from filmSync site.
 * API secret obtained from FilmSync Site (after licensing).
 
 
-# Getting Started
+
+
+
+
+
+## Getting Started
 
 There are three steps to getting started with the SDK:
 * Add headers and libraries to your project.
 * Initialize the listener and webservice.
 * Receive delegates.
 
-## After completing these steps, you’ll be able to measure the following with FilmSync
+### After completing these steps, you’ll be able to measure the following with FilmSync
 
 * Receiving markers from FilmSync enabled videos.
 * Fetch cards from FilmSync server.
 
 
 
-# Adding header files and configuring your project
+
+
+
+
+
+## Adding header files and configuring your project
 
 * Download the FilmSync Library for iOS.
 * Add the Library to you project.
@@ -34,9 +44,17 @@ There are three steps to getting started with the SDK:
     CoreFoundation.framework
     Foundation.framework
 
-# Integration
 
-## Initializing the FilmSync Marker Listener.
+
+
+
+
+
+
+## Integration
+
+
+### Initializing the FilmSync Marker Listener.
 
 add #import "FilmSync.h"
 
@@ -45,7 +63,7 @@ FilmSync *filmSync = [FilmSync sharedFilmSyncManager];
 [filmSync startListener];
 
 
-## Initializing the FilmSync Webservice.
+### Initializing the FilmSync Webservice.
 
 add #import "FilmSync.h"
 
@@ -54,7 +72,7 @@ FilmSyncWebService *filmSyncAPI = [FilmSyncWebService sharedInstance];
 [filmSyncAPI setAPISecret:@"XXXXXXXXXX"];
 
 
-## FilmSync Delegate methods
+### FilmSync Delegate methods
 
 //Dispatched when app is ready to find source audio
 -(void) listeningForSource
