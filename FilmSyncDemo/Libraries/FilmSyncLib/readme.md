@@ -13,7 +13,8 @@
 
 ### Getting Started
 
-There are three steps to getting started with the SDK:
+There are three steps to getting started with the SDK.
+
 * Add headers and libraries to your project.
 * Initialize the listener and webservice.
 * Receive delegates.
