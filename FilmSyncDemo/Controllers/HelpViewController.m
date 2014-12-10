@@ -29,6 +29,7 @@
     
     self.pageController = nil;
     
+    //load the help screen configuration from the plist /Resources/HelpScreenPageList.plist
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"HelpScreenPageList" ofType:@"plist"];
     NSMutableDictionary *plistDict = [NSMutableDictionary dictionaryWithContentsOfFile:plistPath];
     self.pagesArray = [plistDict objectForKey:@"Pages"];
@@ -57,6 +58,7 @@
         self.pageController.dataSource = self;
         CGRect viewFrame = [[self view] bounds];
         [[self.pageController view] setFrame:CGRectMake(0.0, 0.0,viewFrame.size.width,viewFrame.size.height - 10)];
+        //load the first help page
         HelpPageViewController *initialViewController = [self viewControllerAtIndex:0];
         NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
         [self.pageController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
@@ -89,7 +91,7 @@
     
 }
 
-//Swipe to right
+//Help page swipe to right
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     
     NSUInteger index = [(HelpPageViewController *)viewController index];
@@ -103,7 +105,7 @@
     return [self viewControllerAtIndex:index];
 }
 
-//Swipe to left
+//Help page swipe to left
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
     NSUInteger index = [(HelpPageViewController *)viewController index];
     

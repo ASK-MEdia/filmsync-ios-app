@@ -137,7 +137,7 @@ static CardsViewController *sharedInstance = nil;
 #pragma mark - Configurations
 
 /*
- *Purpose : configure Sync Animation
+ *Purpose : configure Wave Sync Animation
  */
 -(void) setupSyncWaveAnimation
 {
