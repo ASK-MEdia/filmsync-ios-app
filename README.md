@@ -3,7 +3,20 @@ FilmSync is a synchronized second screen app to be used during movies, documenta
 
 Viewers can engage with the content in many ways, including: interactive maps and timelines, enhanced graphics, data visualizations, satellite imagery and trivia.
 
-Content producers and storytellers can craft contextual content using the intuitive and easy admin tool that can be accessed at filmsync.org; for delivery in the FilmSync App or exsiting or custom App.
+Content producers and storytellers can craft contextual content using the intuitive and easy admin tool that can be accessed at filmsync.org; for delivery in the FilmSync App or exsiting or custom App. (DISCOUNTINUED)
+
+Part of the FilmSync project.
+
+<ul>
+          <li><a href="https://github.com/ASK-MEdia/filmsync-android-library">FilmSync Android Library</a>
+            <li><a href="https://github.com/ASK-MEdia/filmsync-android-app">FilmSync Android App</a>
+            
+            <li><a href="https://github.com/ASK-MEdia/filmsync-ios-library">FilmSync iOS Library</a>
+          <li><a href="https://github.com/ASK-MEdia/filmsync-ios-app">FilmSync iOS App</a>
+         
+            <li><a href="https://github.com/ASK-MEdia/filmsync-cms">FilmSync CMS</a>
+
+        </ul>
 
 # Introduction
 FilmSync Application will detect the embedded high frequency audio file and fetch corresponding project and card details. The detected card, the corresponding project and the other associated cards in the same project will be stored in an local CoreData database. Every fetched card also has an option to send a tweet from the same page.
